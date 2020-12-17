@@ -1,12 +1,10 @@
 import "./App.css";
-import SignIn from "./components/Hardik/SignIn/SignIn";
+import NavBar from "./components/Hardik/NavBar/NavBar";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <SignIn />
-      </header>
+      <NavBar />
     </div>
   );
 }

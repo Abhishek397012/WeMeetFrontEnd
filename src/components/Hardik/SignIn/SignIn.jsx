@@ -1,5 +1,7 @@
 import React from "react";
 
+import Button from "@material-ui/core/Button";
+
 import SignOut from "../SignOut/SignOut";
 
 import { auth, signInWithGoogle } from "../../../firebase/firebase.utils";
@@ -13,7 +15,9 @@ const SignIn = () => {
       {user ? (
         <SignOut />
       ) : (
-        <button onClick={signInWithGoogle}>Sign In with Google</button>
+        <Button variant="contained" onClick={signInWithGoogle}>
+          Sign In with Google
+        </Button>
       )}
     </div>
   );
