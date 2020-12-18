@@ -14,17 +14,15 @@ const config = {
 
 firebase.initializeApp(config);
 
-export const createUserProfile = async (userAuth, additionalData) => {
-  if (!userAuth) return;
-  // add code here to add users in mongodb
-  return null;
-};
-
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+
+const fbProvider = new firebase.auth.FacebookAuthProvider();
+fbProvider.setCustomParameters({ prompt: "select_account" });
+export const signInWithFacebook = () => auth.signInWithPopup(fbProvider);
 
 export default firebase;

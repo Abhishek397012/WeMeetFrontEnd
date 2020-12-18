@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Logo from "./logo.jpg";
 
-import SignIn from "../SignIn/SignIn";
+import SignIn from "../LogIn/LogIn";
 
 const useStyles = makeStyles((theme) => ({
   root: {

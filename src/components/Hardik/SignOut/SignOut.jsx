@@ -7,7 +7,11 @@ import Button from "@material-ui/core/Button";
 const SignOut = () => {
   return (
     <div>
-      <Button variant="contained" onClick={() => auth.signOut()}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => auth.signOut()}
+      >
         Sign Out
       </Button>
     </div>
