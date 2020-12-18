@@ -1,3 +1,8 @@
+
+/*
+    Sidebar
+*/
+
 .dash_container{
     display: flex;
 }
@@ -92,6 +97,102 @@ li{
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease 0s;
-    color: rgb(225, 224, 230);
     font-size: 18px;
+}
+
+
+.sidebar_links{
+    color: rgb(225, 224, 230);
+    transition: all 0.3s;
+
+}
+
+.sidebar_links:hover{
+    color: rgb(139, 137, 145);
+    text-decoration: none;
+    transition: all 0.3s;
+    padding-left: 10px;
+}
+
+/*
+    Dashboard Content
+*/
+
+.dashboard_wrapper{
+    padding-left: 32px;
+    padding-right: 32px;
+    flex-direction: column;
+    display: flex;
+    box-sizing: border-box;
+    background-color: rgb(19, 18, 26);
+    min-height: calc(100vh - 65px);
+}
+
+.dashboard_heading{
+    color: rgb(188, 186, 196);
+    font-weight: bold;
+    font-size: 2em;
+    margin-top: 2em;
+    margin-bottom: 1.3em;
+}
+
+/*
+    Upcoming Event Display
+*/
+
+.upcoming_wrapper{
+    background-color: rgb(50, 48, 59);
+    width: 100%;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    min-height: 280px;
+}
+
+@media screen and (min-width: 640px){
+    .upcoming_wrapper {
+        padding: 24px;
+    }
+}
+@media screen and (min-width: 960px){
+    .upcoming_wrapper {
+        padding: 24px;
+    }
+}
+
+.upcoming_content{
+    width: 100%;
+    color: rgb(188, 186, 196);
+}
+
+/*
+    Dashboard Bottom
+*/
+
+.dashboard_bottom_wrapper{
+    border-top: 1px solid  rgb(67, 66, 71);
+    margin-top: 2.5em;
+}
+
+.dashboard_bottom_content{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.bottom_left{
+    z-index: 1;
+    margin-bottom: 32px;
+    width: 60%;
+    max-width: 45vw;
+    flex-direction: column;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.bottom_heading{
+    color: rgb(188, 186, 196);
+    font-weight: bold;
+    font-size: 2em;
+    margin-bottom: 1.3em;
 }

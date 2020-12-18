@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import Dashboard from './CommunityDashboard';
+import WeMeets from './WeMeets';
 
 const Sidebar = (props) => {
 
@@ -13,8 +15,12 @@ const Sidebar = (props) => {
                 </div>
                 <nav className="clearfix s-navbar">
                     <ul className="no_style">
-                        <li>Dashboard</li> 
-                        <li>WeMeet</li> 
+                        <li>
+                            <Link className="sidebar_links" to="/">Dashboard</Link>
+                        </li>
+                        <li>
+                            <Link className="sidebar_links" to="/wemeets">WeMeets</Link>
+                        </li>
                     </ul>
                 </nav>
             </div>
