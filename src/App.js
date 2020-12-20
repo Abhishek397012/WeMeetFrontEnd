@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import CommunityDashboard from "./components/Prem/CommunityDashboard";
+import WeMeets from "./components/Prem/WeMeets";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={CommunityDashboard}></Route>
+          <Route exact path="/wemeets" component={WeMeets}></Route>
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

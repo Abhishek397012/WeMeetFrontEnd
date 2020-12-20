@@ -1,0 +1,289 @@
+/*
+    Sidebar
+*/
+
+.dash_container {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  min-height: calc(100vh - 65px);
+  padding: 24px 0px;
+  left: 0px;
+  bottom: 0px;
+  top: 0px;
+  z-index: 100;
+  background-color: rgb(31, 30, 36);
+}
+
+.top-part-sidebar {
+  border-bottom: 1px solid rgb(60, 57, 70);
+  border-top-color: rgb(60, 57, 70);
+  border-right-color: rgb(60, 57, 70);
+  border-left-color: rgb(60, 57, 70);
+  flex-direction: column;
+  display: flex;
+}
+
+.dash_content {
+  flex-grow: 1;
+}
+
+.header_Name {
+  position: relative;
+  padding-right: 20px;
+  align-self: flex-start;
+  overflow-wrap: anywhere;
+  padding-left: 32px;
+  padding-bottom: 4px;
+  color: rgb(225, 224, 230);
+  font-size: 22px;
+  line-height: 20px;
+  font-family: CircularXXWeb-Bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+.header_Description {
+  padding-left: 32px;
+  margin-bottom: 24px;
+  color: rgb(171, 168, 184);
+  font-size: 12px;
+  line-height: 12px;
+  font-family: CircularXXWeb-Medium;
+  overflow-wrap: break-word;
+}
+
+.name_img {
+  display: flex;
+  margin-left: 32px;
+  background-image: url(https://airmeet-images.s3.ap-south-1.amazonaws.com/images/community/12e9f03c.png);
+  border-radius: 50%;
+  background-color: rgb(60, 57, 70);
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 12px;
+  height: 50px;
+  width: 50px;
+}
+
+.s-navbar {
+  position: relative;
+  z-index: 2;
+}
+
+.no_style {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  overflow: hidden;
+  margin: 15px 0px;
+  padding-left: 35px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  font-size: 18px;
+}
+
+.sidebar_links {
+  color: rgb(225, 224, 230);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.sidebar_links:hover {
+  color: rgb(139, 137, 145);
+  text-decoration: none;
+  transition: all 0.3s;
+  padding-left: 10px;
+}
+
+/*
+    Dashboard Content
+*/
+
+.dashboard_wrapper {
+  padding-left: 32px;
+  padding-right: 32px;
+  flex-direction: column;
+  display: flex;
+  box-sizing: border-box;
+  background-color: rgb(19, 18, 26);
+  min-height: calc(100vh - 65px);
+}
+
+.dashboard_heading {
+  color: rgb(188, 186, 196);
+  font-weight: bold;
+  font-size: 2em;
+  margin-top: 2em;
+  margin-bottom: 1.3em;
+}
+
+/*
+    Upcoming Event Display
+*/
+
+.upcoming_wrapper {
+  background-color: rgb(50, 48, 59);
+  width: 100%;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  min-height: 280px;
+}
+
+@media screen and (min-width: 640px) {
+  .upcoming_wrapper {
+    padding: 24px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .upcoming_wrapper {
+    padding: 24px;
+  }
+}
+
+.upcoming_content {
+  width: 100%;
+  color: rgb(188, 186, 196);
+}
+
+/*
+    Dashboard Bottom
+*/
+
+.dashboard_bottom_wrapper {
+  border-top: 1px solid rgb(67, 66, 71);
+  margin-top: 2.5em;
+}
+
+.dashboard_bottom_content {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.bottom_left {
+  z-index: 1;
+  margin-bottom: 32px;
+  width: 60%;
+  max-width: 45vw;
+  flex-direction: column;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.bottom_heading {
+  color: rgb(188, 186, 196);
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 1.3em;
+}
+
+/*WeMeet on dashboard*/
+.WeMeet_Dashboard_heading {
+  color: rgb(188, 186, 196);
+  font-weight: bold;
+}
+.WeMeet_Main_Dashboard_heading {
+  margin-top: 2rem;
+}
+.WeMeetCard {
+  background-color: rgb(67, 66, 71);
+  border-radius: 1rem;
+  margin: 1.5rem 0.5rem;
+  padding: 1.25rem;
+}
+.WeMeetCard_content {
+  color: rgb(188, 186, 196);
+  text-align: center;
+}
+.vl {
+  border-left: 1px dashed white;
+  height: inherit;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  /* margin-right: 2rem; */
+}
+.WeMeet_Month {
+  color: rgb(188, 186, 196);
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.img {
+  width: 130px;
+  height: 130px;
+  float: left;
+  margin-right: 1rem;
+}
+.WeMeetHeaderCard {
+  margin-left: 0.1rem;
+  font-size: 0.8rem;
+}
+.WeMeetHeaderCardCreateDate {
+  color: rgb(188, 186, 196);
+  background-color: rgb(34, 101, 179);
+  padding: 0.2rem;
+}
+.WeMeetHeaderCardStatus {
+  margin-left: 1rem;
+  text-transform: uppercase;
+  color: rgb(1, 75, 1);
+}
+.WeMeetBottomCard {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+}
+
+.btndisplay {
+  position: absolute;
+  right: 0;
+  bottom: 3px;
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0.3rem;
+}
+.AllMonthlyWeMeets {
+  background-color: grey;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+.AllMonthlyWeMeetsContent {
+  margin-top: 0.2rem;
+  font-size: 0.99rem;
+}
+.AllMonthlyWeMeetsHeading {
+  font-weight: bold;
+}
+.AllMonthlyWeMeetsTime {
+  color: rgb(1, 49, 121);
+}
+.container {
+  margin: 0;
+  padding: 0;
+}
