@@ -10,6 +10,8 @@ const CommunityDashboard = () => {
     const [upcomingEvent, setUpcomingEvent] = useState({});
     const [error, SetError] = useState(false);
     const [found, setFound] = useState(false);
+    const [shown1, setShown1] = useState(false);
+    const [shown2, setShown2] = useState(false);
 
     const loadUpcomingWemeet = () =>{
         // Get the information from the database
@@ -26,6 +28,19 @@ const CommunityDashboard = () => {
         </video>
     )
 
+    const showContent1 = () => (
+        <div className="dash_info_content">
+            You're on WeMeet's Dashboard. Now you can use this dashboard to stay up-to-date on the status 
+            and performance of your future events, meetups or conferences.
+        </div>
+    )
+    const showContent2 = () => (
+        <div className="dash_info_content">
+           Now you could click on your event name above and add all the remaining details including speakers and 
+           sessions. Or you can click "Create WeMeet" on top-right to host a new single or multi-session WeMeet.
+        </div>
+    )
+    
     return (
         <SidebarLayout>
             <div className="dashboard_wrapper">
@@ -36,6 +51,21 @@ const CommunityDashboard = () => {
                         <div className="row">
                             <div className="col-7 bottom_left" >
                                 <h6 className="bottom_heading">WeMeet guides and help</h6>
+                                <div className="dash_info">
+                                    <div className="dash_info_header">
+                                        <button className="btn dash_btn" onClick={()=>setShown1(!shown1)}>Where Am I?</button>
+                                    </div>
+                                    {
+                                        shown1 && showContent1()
+                                    } 
+                                    <hr style={{backgroundColor: "rgb(67, 66, 71)", marginLeft:"1em"}}/>
+                                    <div className="dash_info_header">
+                                        <button className="btn dash_btn sec" onClick={()=>setShown2(!shown2)}>What shoud I do next?</button>
+                                    </div>
+                                    {
+                                        shown2 && showContent2()
+                                    }
+                                </div>
                             </div>
                             <div className="col-5" style={{textAlign: 'center'}}>
                                 {ShowWalkthrough()}

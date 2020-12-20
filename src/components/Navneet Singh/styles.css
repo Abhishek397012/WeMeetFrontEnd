@@ -177,7 +177,7 @@ li{
 
 .dashboard_bottom_content{
     margin-top: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 0.3em;
 }
 
 .bottom_left{
@@ -195,4 +195,44 @@ li{
     font-weight: bold;
     font-size: 2em;
     margin-bottom: 1.3em;
+}
+
+/*
+    Dashboard information
+*/
+
+.dash_info{
+    margin-left: 4em;
+}
+
+.dash_btn{
+    color:rgb(240, 239, 245);
+    background-color: rgb(19, 18, 26);
+    font-size: 1.4em;
+    text-align: left;
+    transition: all 0.3s ease 0s;
+}
+
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+
+.dash_btn:hover{
+    transition: all 0.3s ease 0s;
+    color:rgb(135, 133, 143);
+}
+
+.dash_info_content{
+    color: white;
+    color:rgb(139, 137, 145);
+    padding-left: 1em;
+}
+
+.dash_info_header{
+    display: flex;
+}
+
+#content{
+    display: none;
 }
