@@ -166,6 +166,50 @@ li{
     color: rgb(188, 186, 196);
 }
 
+.upcoming_left{
+    border: 1px solid red;
+}
+
+.upcoming_right{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.upcoming_right_up{
+    border: 1px solid yellow;
+    width: 100%;
+    flex-grow: 1.5;
+}
+
+.upcoming_right_down{
+    border: 1px solid yellow;
+    width: 100%;    
+    flex-grow: 1;
+    display: flex;
+}
+
+.urdn{
+    border: 1px solid blue;
+    flex-grow: 0.7;
+}
+
+.urdh{
+    border: 1px solid blue;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.urdh_name{
+    border: 1px solid green;
+}
+
+.urdh_button{
+    border: 1px solid green;
+    align-self: center;
+}
+
 /*
     Dashboard Bottom
 */
@@ -236,3 +280,4 @@ li{
 #content{
     display: none;
 }
+
