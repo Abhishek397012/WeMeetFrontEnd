@@ -281,3 +281,94 @@ li{
     display: none;
 }
 
+
+
+
+/*WeMeet on dashboard*/
+.WeMeet_Dashboard_heading {
+    color: rgb(188, 186, 196);
+    font-weight: bold;
+  }
+  .WeMeet_Main_Dashboard_heading {
+    margin-top: 2rem;
+  }
+  .WeMeetCard {
+    background-color: rgb(67, 66, 71);
+    border-radius: 1rem;
+    margin: 1.5rem 0.5rem;
+    padding: 1.25rem;
+  }
+  .WeMeetCard_content {
+    color: rgb(188, 186, 196);
+    text-align: center;
+  }
+  .vl {
+    border-left: 1px dashed white;
+    height: inherit;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    /* margin-right: 2rem; */
+  }
+  .WeMeet_Month {
+    color: rgb(188, 186, 196);
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+  
+  .img {
+    width: 130px;
+    height: 130px;
+    float: left;
+    margin-right: 1rem;
+  }
+  .WeMeetHeaderCard {
+    margin-left: 0.1rem;
+    font-size: 0.8rem;
+  }
+  .WeMeetHeaderCardCreateDate {
+    color: rgb(188, 186, 196);
+    background-color: rgb(34, 101, 179);
+    padding: 0.2rem;
+  }
+  .WeMeetHeaderCardStatus {
+    margin-left: 1rem;
+    text-transform: uppercase;
+    color: rgb(1, 75, 1);
+  }
+  .WeMeetBottomCard {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .btndisplay {
+    position: absolute;
+    right: 0;
+    bottom: 3px;
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  .AllMonthlyWeMeets {
+    background-color: grey;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+  .AllMonthlyWeMeetsContent {
+    margin-top: 0.2rem;
+    font-size: 0.99rem;
+  }
+  .AllMonthlyWeMeetsHeading {
+    font-weight: bold;
+  }
+  .AllMonthlyWeMeetsTime {
+    color: rgb(1, 49, 121);
+  }
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+  
+

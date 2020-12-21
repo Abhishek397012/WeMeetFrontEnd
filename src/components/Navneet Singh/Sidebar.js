@@ -16,10 +16,14 @@ const Sidebar = (props) => {
                 <nav className="clearfix s-navbar">
                     <ul className="no_style">
                         <li>
-                            <Link className="sidebar_links" to="/">Dashboard</Link>
+                            <Link className="sidebar_links" to="/">
+                                <i class="fas fa-th-large"></i> Dashboard
+                            </Link>
                         </li>
                         <li>
-                            <Link className="sidebar_links" to="/wemeets">WeMeets</Link>
+                            <Link className="sidebar_links" to="/wemeets">
+                                <i class="fas fa-video"></i> WeMeets
+                            </Link>
                         </li>
                     </ul>
                 </nav>
