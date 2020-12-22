@@ -12,7 +12,7 @@ export const styles = {
     justifyContent: "center",
   },
   main: {
-    backgroundColor: "#212529",
+    backgroundColor: "rgba(33,37,41,1)",
     borderRadius: "10px",
     padding: "20px",
   },
