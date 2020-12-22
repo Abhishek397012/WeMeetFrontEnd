@@ -8,8 +8,8 @@
 
 .sidebar {
   width: 250px;
-  min-height: calc(100vh - 65px);
-  max-height: calc(100vh - 65px);
+  min-height: calc(100vh);
+  max-height: calc(100vh);
   padding: 24px 0px;
   left: 0px;
   bottom: 0px;
@@ -129,8 +129,8 @@ li {
   display: flex;
   box-sizing: border-box;
   background-color: rgb(19, 18, 26);
-  max-height: calc(100vh - 65px);
-  min-height: calc(100vh - 65px);
+  max-height: calc(100vh);
+  min-height: calc(100vh);
   overflow-y: scroll;
 }
 
@@ -382,7 +382,7 @@ Profile Page
 .profile_wrapper {
   box-sizing: border-box;
   background-color: rgb(19, 18, 26);
-  max-height: calc(100vh - 65px);
+  max-height: calc(100vh);
   display: flex;
   flex-direction: column;
   padding-left: 2em;
