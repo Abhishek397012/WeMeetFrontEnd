@@ -1,19 +1,22 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
-import CommunityDashboard from './components/Prem/CommunityDashboard';
-import WeMeets from './components/Prem/WeMeets';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import CommunityDashboard from "./components/Prem/CommunityDashboard";
+import WeMeets from "./components/Prem/WeMeets";
+import Profile from "./components/Prem/Profile";
+import EditProfile from "./components/Prem/EditProfile";
 
-
-const App = ()=>{
+const App = () => {
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/" component={CommunityDashboard}></Route>
+          <Route exact path="/dashboard" component={CommunityDashboard}></Route>
           <Route exact path="/wemeets" component={WeMeets}></Route>
+          <Route exact path="/profile" component={Profile}></Route>
+          <Route exact path="/editProfile" component={EditProfile}></Route>
         </Switch>
       </div>
     </Router>
-  )
-}
+  );
+};
 
 export default App;
