@@ -1,11 +1,10 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
-import CommunityDashboard from './components/Navneet Singh/CommunityDashboard';
-import WeMeets from './components/Navneet Singh/WeMeets';
-import Profile from './components/Navneet Singh/Profile'
-import EditProfile from './components/Navneet Singh/EditProfile'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import CommunityDashboard from "./components/Prem/CommunityDashboard";
+import WeMeets from "./components/Prem/WeMeets";
+import Profile from "./components/Prem/Profile";
+import EditProfile from "./components/Prem/EditProfile";
 
-
-const App = ()=>{
+const App = () => {
   return (
     <Router>
       <div className="App">
@@ -17,7 +16,7 @@ const App = ()=>{
         </Switch>
       </div>
     </Router>
-  )
-}
+  );
+};
 
 export default App;
