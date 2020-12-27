@@ -1,0 +1,28 @@
+.color {
+  color: white;
+  font-family: "Fredoka One", cursive;
+}
+
+.change {
+  border-radius: 50%;
+}
+
+.size {
+  width: 100%;
+}
+
+.btn1 {
+  position: absolute;
+  top: 75%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.btn2 {
+  position: absolute;
+  top: 75%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
