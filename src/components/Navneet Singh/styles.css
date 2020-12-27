@@ -8,8 +8,8 @@
 
 .sidebar {
   width: 250px;
-  min-height: calc(100vh);
-  max-height: calc(100vh);
+  min-height: calc(100vh - 70px);
+  max-height: calc(100vh - 70px);
   padding: 24px 0px;
   left: 0px;
   bottom: 0px;
@@ -129,8 +129,8 @@ li {
   display: flex;
   box-sizing: border-box;
   background-color: rgb(19, 18, 26);
-  max-height: calc(100vh);
-  min-height: calc(100vh);
+  max-height: calc(100vh - 70px);
+  min-height: calc(100vh - 70px);
   overflow-y: scroll;
 }
 
