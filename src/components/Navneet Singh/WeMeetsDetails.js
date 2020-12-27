@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
+import { Link } from 'react-router-dom';
 import Default from "./images/default.jpg"
 class WeMeetsCard extends Component {
   static defaultProps = {
@@ -38,7 +39,9 @@ class WeMeetsCard extends Component {
         </div>
         <div className="row WeMeetBottomCard ">
           <h6>{this.props.registrationcount} Registrations</h6>
-          <button className="btn btn-dark btndisplay">View Details</button>
+          <Link to={`/wemeets/${this.props.id}`}>
+            <button className="btn btn-dark btndisplay">View Details</button>
+          </Link>
         </div>
       </div>
     );

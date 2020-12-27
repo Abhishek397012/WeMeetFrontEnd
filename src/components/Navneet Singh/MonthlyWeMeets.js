@@ -20,6 +20,7 @@ class MonthlyWemeets extends Component {
                   host="191210037 Community"
                   title="Backend Discussion"
                   meetingtime="12:00 PM - 1:00 PM IST"
+                  id="12345"
                 />
                 <WeMeetsCard
                   createdon="Sat 20 Dec 2020"
@@ -27,6 +28,7 @@ class MonthlyWemeets extends Component {
                   host="191210037 Community"
                   title="Dashboard Creation"
                   meetingtime="12:00 PM - 1:00 PM IST"
+                  id="12345"
                 />
                 <WeMeetsCard
                   createdon="Sat 19 Dec 2020"
@@ -34,6 +36,7 @@ class MonthlyWemeets extends Component {
                   host="191210037 Community"
                   title="We Meet Discussion"
                   meetingtime="12:00 PM - 1:00 PM IST"
+                  id="12345"
                 />
                 <WeMeetsCard
                   createdon="Sat 19 Dec 2020"
@@ -41,6 +44,7 @@ class MonthlyWemeets extends Component {
                   host="191210037 Community"
                   title="We Meet Introduction"
                   meetingtime="12:00 PM - 1:00 PM IST"
+                  id="12345"
                 />
               </div>
             </div>

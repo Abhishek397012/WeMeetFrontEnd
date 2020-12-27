@@ -10,6 +10,7 @@ const ProfileUpcoming = () =>{
                 host="191210037 Community"
                 title="Backend Discussion"
                 meetingtime="12:00 PM - 1:00 PM IST"
+                id="12345"
             />
             <WeMeetsCard
                 createdon="Sat 20 Dec 2020"
@@ -17,6 +18,7 @@ const ProfileUpcoming = () =>{
                 host="191210037 Community"
                 title="Backend Discussion"
                 meetingtime="12:00 PM - 1:00 PM IST"
+                id="12345"
             />
             <WeMeetsCard
                 createdon="Sat 20 Dec 2020"
@@ -24,6 +26,7 @@ const ProfileUpcoming = () =>{
                 host="191210037 Community"
                 title="Backend Discussion"
                 meetingtime="12:00 PM - 1:00 PM IST"
+                id="12345"
             />
 
         </div>
