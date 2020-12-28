@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 import "./styles.css";
-import { Link } from 'react-router-dom';
-import Default from "./images/default.jpg"
+import { Link } from "react-router-dom";
+import Default from "./images/default.jpg";
 class WeMeetsCard extends Component {
   static defaultProps = {
     registrationcount: 0,
@@ -12,7 +11,7 @@ class WeMeetsCard extends Component {
       <div className="col-sm-10 col-md-10 col-lg-5 AllMonthlyWeMeets">
         <div className="row">
           <div className="col-sm-10 col-md-4 col-lg-4">
-            <img className="img" src={Default} alt="default image" />
+            <img className="img" src={Default} alt="default img" />
           </div>
           <div className="col-sm-10 col-md-8 col-lg-8">
             <div className="row WeMeetHeaderCard">

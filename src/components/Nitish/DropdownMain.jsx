@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 
 import CreateWeMeetForm from "../Hardik/CreateWeMeetForm/CreateWeMeetForm";
 import SignOut from "../Hardik/SignOut/SignOut";
 
+import Button from "@material-ui/core/Button";
 import PersonIcon from "@material-ui/icons/Person";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 
@@ -27,12 +29,12 @@ const DropdownMain = () => {
         </div>
         {hidden ? (
           <div className="dropdown-content">
-            <a href="#root">
-              <PersonIcon /> My Profile
-            </a>
-            <a href="#root">
-              <DashboardIcon /> Dashbord
-            </a>
+            <Button variant="contained" style={{ marginBottom: "5px" }}>
+              <PersonIcon style={{ marginRight: "10px" }} /> My Profile
+            </Button>
+            <Button variant="contained" style={{ marginBottom: "5px" }}>
+              <DashboardIcon style={{ marginRight: "10px" }} /> Dashbord
+            </Button>
             <SignOut />
           </div>
         ) : null}
@@ -41,4 +43,4 @@ const DropdownMain = () => {
   );
 };
 
-export default DropdownMain;
+export default withRouter(DropdownMain);
