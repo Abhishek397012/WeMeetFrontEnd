@@ -1,9 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import Dashboard from "./CommunityDashboard";
 import WeMeets from "./WeMeets";
 
-const Sidebar = (props) => {
+const Sidebar = ({id, children}) => {
+
+
   return (
     <div className="dash_container">
       <div className="sidebar">
@@ -15,17 +17,17 @@ const Sidebar = (props) => {
         <nav className="clearfix s-navbar">
           <ul className="no_style">
             <li>
-              <Link className="sidebar_links" to="/dashboard">
+              <Link className="sidebar_links" to={`/${id}/dashboard`}>
                 <i class="fas fa-th-large"></i> Dashboard
               </Link>
             </li>
             <li>
-              <Link className="sidebar_links" to="/wemeets">
+              <Link className="sidebar_links" to={`/${id}/wemeets`}>
                 <i class="fas fa-video"></i> WeMeets
               </Link>
             </li>
             <li>
-              <Link className="sidebar_links" to="/profile">
+              <Link className="sidebar_links" to={`/${id}/profile`}>
                 <i class="fa fa-user"></i> Profile
               </Link>
             </li>
@@ -37,7 +39,7 @@ const Sidebar = (props) => {
           </ul>
         </nav>
       </div>
-      <div className="dash_content">{props.children}</div>
+      <div className="dash_content">{children}</div>
     </div>
   );
 };
