@@ -13,6 +13,7 @@ export const useStyles = makeStyles(() => ({
     margin: "auto",
     overflow: "auto",
     zIndex: "10",
+    backgroundColor: "rgba(0,0,0,0.5)",
   },
   form: {
     width: "500px",

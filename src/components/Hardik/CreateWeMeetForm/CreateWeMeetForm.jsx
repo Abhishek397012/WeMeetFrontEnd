@@ -9,6 +9,8 @@ import Button from "@material-ui/core/Button";
 
 import { useStyles } from "./CreateWeMeetForm.styles";
 
+import { auth } from "../../../firebase/firebase.utils";
+
 const theme = createMuiTheme({
   palette: {
     type: "dark",
@@ -17,9 +19,11 @@ const theme = createMuiTheme({
 
 const CreateWeMeetForm = () => {
   const classes = useStyles();
+  const [formVisibility, setFormVisibility] = useState(false);
   const [lounge, loungeStatus] = useState(false);
   const [meetVisibility, setMeetVisibility] = useState(false);
   const [formValues, setFormValues] = useState({
+    hostId: auth.currentUser.uid,
     title: "",
     description: "",
     startDateTime: "",
@@ -36,6 +40,7 @@ const CreateWeMeetForm = () => {
     event.preventDefault();
     console.log(formValues);
     alert("form submitted");
+    setFormVisibility(false);
   };
 
   const handleLounge = (event) => {
@@ -51,106 +56,120 @@ const CreateWeMeetForm = () => {
   };
 
   return (
-    <div className={classes.popup}>
-      <ThemeProvider theme={theme}>
-        <form
-          onSubmit={handleSubmit}
-          className={classes.form}
-          autoComplete="off"
-        >
-          <div className={classes.header}>
-            <h3 className={classes.title}>CREATE WEMEET</h3>
-            <Close style={{ cursor: "pointer" }} />
-          </div>
-          <div>
-            <TextField
-              required
-              name="title"
-              onChange={handleChange}
-              className={classes.textfield}
-              id="outlined-basic"
-              label="WeMeet Title"
-              placeholder="Please add a descriptive event name."
-              variant="outlined"
-            />
-            <TextField
-              required
-              name="description"
-              onChange={handleChange}
-              className={classes.textfield}
-              id="outlined-basic"
-              label="Description"
-              placeholder="Add a short description of an event."
-              variant="outlined"
-            />
-            <TextField
-              required
-              name="startDateTime"
-              onChange={handleChange}
-              className={classes.datetime}
-              label="Start date and time"
-              type="datetime-local"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-            <TextField
-              required
-              name="endDateTime"
-              onChange={handleChange}
-              className={classes.datetime}
-              label="End date and time"
-              type="datetime-local"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-            <div className={classes.subHeader}>
-              <h3 className={classes.title}>
-                WeMeet Visibility : {meetVisibility ? "Public" : "Private"}
-              </h3>
-              <Switch
-                name="visibility"
-                className={classes.switch}
-                checked={meetVisibility}
-                color="primary"
-                onChange={handleMeetVisibility}
-                inputProps={{ "aria-label": "secondary checkbox" }}
-              />
-            </div>
-            <div className={classes.subHeader}>
-              <h3 className={classes.title}>Enable Social Lounge</h3>
-              <Switch
-                className={classes.switch}
-                checked={lounge}
-                color="primary"
-                onChange={handleLounge}
-                name="loungeTable"
-                inputProps={{ "aria-label": "secondary checkbox" }}
-              />
-            </div>
-            {lounge ? (
-              <TextField
-                name="loungeTables"
-                onChange={handleChange}
-                type="number"
-                InputProps={{ inputProps: { min: 0, max: 20 } }}
-                className={classes.textfield}
-                id="outlined-basic"
-                label="Social Lounge"
-                placeholder="Number of tables required (between 0 to 20)."
-                variant="outlined"
-              />
-            ) : null}
-          </div>
-          <div className={classes.submit}>
-            <Button type="submit" variant="contained" color="primary">
-              CREATE WEMEET
-            </Button>
-          </div>
-        </form>
-      </ThemeProvider>
-    </div>
+    <>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setFormVisibility(true)}
+      >
+        Create WeMeet
+      </Button>
+      {formVisibility ? (
+        <div className={classes.popup}>
+          <ThemeProvider theme={theme}>
+            <form
+              onSubmit={handleSubmit}
+              className={classes.form}
+              autoComplete="off"
+            >
+              <div className={classes.header}>
+                <h3 className={classes.title}>CREATE WEMEET</h3>
+                <Close
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setFormVisibility(false)}
+                />
+              </div>
+              <div>
+                <TextField
+                  required
+                  name="title"
+                  onChange={handleChange}
+                  className={classes.textfield}
+                  id="outlined-basic"
+                  label="WeMeet Title"
+                  placeholder="Please add a descriptive event name."
+                  variant="outlined"
+                />
+                <TextField
+                  required
+                  name="description"
+                  onChange={handleChange}
+                  className={classes.textfield}
+                  id="outlined-basic"
+                  label="Description"
+                  placeholder="Add a short description of an event."
+                  variant="outlined"
+                />
+                <TextField
+                  required
+                  name="startDateTime"
+                  onChange={handleChange}
+                  className={classes.datetime}
+                  label="Start date and time"
+                  type="datetime-local"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+                <TextField
+                  required
+                  name="endDateTime"
+                  onChange={handleChange}
+                  className={classes.datetime}
+                  label="End date and time"
+                  type="datetime-local"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+                <div className={classes.subHeader}>
+                  <h3 className={classes.title}>
+                    WeMeet Visibility : {meetVisibility ? "Public" : "Private"}
+                  </h3>
+                  <Switch
+                    name="visibility"
+                    className={classes.switch}
+                    checked={meetVisibility}
+                    color="primary"
+                    onChange={handleMeetVisibility}
+                    inputProps={{ "aria-label": "secondary checkbox" }}
+                  />
+                </div>
+                <div className={classes.subHeader}>
+                  <h3 className={classes.title}>Enable Social Lounge</h3>
+                  <Switch
+                    className={classes.switch}
+                    checked={lounge}
+                    color="primary"
+                    onChange={handleLounge}
+                    name="loungeTable"
+                    inputProps={{ "aria-label": "secondary checkbox" }}
+                  />
+                </div>
+                {lounge ? (
+                  <TextField
+                    name="loungeTables"
+                    onChange={handleChange}
+                    type="number"
+                    InputProps={{ inputProps: { min: 0, max: 8 } }}
+                    className={classes.textfield}
+                    id="outlined-basic"
+                    label="Social Lounge"
+                    placeholder="Number of tables required (between 0 to 8)."
+                    variant="outlined"
+                  />
+                ) : null}
+              </div>
+              <div className={classes.submit}>
+                <Button type="submit" variant="contained" color="primary">
+                  CREATE WEMEET
+                </Button>
+              </div>
+            </form>
+          </ThemeProvider>
+        </div>
+      ) : null}
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Logo from "./logo.jpg";
 
-import SignIn from "../LogIn/LogIn";
+import UserDropdown from "../UserDropdown/UserDropdown";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,7 +47,7 @@ const NavBar = () => {
           <Typography variant="h6" className={classes.title}>
             WeMeet
           </Typography>
-          <SignIn />
+          <UserDropdown />
         </Toolbar>
       </AppBar>
     </div>
