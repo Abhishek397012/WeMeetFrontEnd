@@ -474,3 +474,54 @@
     border-radius: 12%;
   }
   
+
+.top_summary_sidebar{
+  border: 1px solid blue;
+}
+
+.bottom_summary_sidebar{
+  border: 1px solid red;
+}
+
+.back-btn{
+  background: #565365;
+  border-radius: 8px;
+  transition: all 0.3s ease 0s;
+  margin-bottom: 2em;
+  margin-left: 1.5em;
+  border: 0;
+  padding: 0.2em;
+  padding-right: 1em
+}
+.back-btn:hover{
+  background: #9592a3;  
+  transition: all 0.3s ease 0s;
+}
+
+
+.header_name_summary{
+  color: rgb(225, 224, 230);
+  font-weight: 500;
+  font-size:1.3em;
+  margin-bottom: 1em;
+  margin-left: 1.2em;
+}
+
+.header_date_summary{
+  color: rgb(98, 95, 255);
+  font-weight: 500;
+  font-size:1em;
+  margin-bottom: 1.3em;
+  margin-left: 1.6em;
+}
+
+.start_summary{
+  font-size: 18px;
+  padding: 0.6em;
+  margin-left: 1.3em;
+  margin-right: 1.3em;
+  width: 70%;
+  border-radius: 5px;
+  margin-bottom: 1.5em;
+  font-weight: 600  ;
+}
