@@ -12,7 +12,7 @@ import { auth } from "../../firebase/firebase.utils";
 
 import "./DropdownMain.css";
 
-const DropdownMain = () => {
+const DropdownMain = ({ history }) => {
   const [hidden, toggleHidden] = useState(false);
 
   return (
@@ -29,10 +29,24 @@ const DropdownMain = () => {
         </div>
         {hidden ? (
           <div className="dropdown-content">
-            <Button variant="contained" style={{ marginBottom: "5px" }}>
+            <Button
+              onClick={() => {
+                history.push("/profile");
+                toggleHidden(!hidden);
+              }}
+              variant="contained"
+              style={{ marginBottom: "5px" }}
+            >
               <PersonIcon style={{ marginRight: "10px" }} /> My Profile
             </Button>
-            <Button variant="contained" style={{ marginBottom: "5px" }}>
+            <Button
+              onClick={() => {
+                history.push("/dashboard");
+                toggleHidden(!hidden);
+              }}
+              variant="contained"
+              style={{ marginBottom: "5px" }}
+            >
               <DashboardIcon style={{ marginRight: "10px" }} /> Dashbord
             </Button>
             <SignOut />
