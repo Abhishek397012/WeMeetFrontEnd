@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -17,7 +18,7 @@ const theme = createMuiTheme({
   },
 });
 
-const CreateWeMeetForm = () => {
+const CreateWeMeetForm = ({ history }) => {
   const classes = useStyles();
   const [formVisibility, setFormVisibility] = useState(false);
   const [lounge, loungeStatus] = useState(false);
@@ -41,6 +42,7 @@ const CreateWeMeetForm = () => {
     console.log(formValues);
     alert("form submitted");
     setFormVisibility(false);
+    history.push("/dashboard");
   };
 
   const handleLounge = (event) => {
@@ -173,4 +175,4 @@ const CreateWeMeetForm = () => {
   );
 };
 
-export default CreateWeMeetForm;
+export default withRouter(CreateWeMeetForm);
