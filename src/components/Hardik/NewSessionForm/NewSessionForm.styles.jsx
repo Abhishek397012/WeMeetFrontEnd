@@ -32,14 +32,6 @@ export const useStyles = makeStyles(() => ({
     margin: "0",
     fontSize: "20px",
   },
-  subHeader: {
-    color: "#fff",
-    padding: "0",
-    margin: "15px 0 0 5px",
-    fontSize: "18px",
-    display: "flex",
-    justifyContent: "space-between",
-  },
   textfield: {
     width: "100%",
     margin: "10px 5px 5px 0px",

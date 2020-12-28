@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 import SignInGoogle from "../SignInGoogle/SignInGoogle";
 import SignInFb from "../SignInFb/SignInFb";
-import SignOut from "../SignOut/SignOut";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Close from "@material-ui/icons/Close";
+import PersonIcon from "@material-ui/icons/Person";
 
 import { styles } from "./LogIn.styles";
 
@@ -22,19 +22,16 @@ const LogIn = () => {
 
   return (
     <div>
-      {user ? (
-        <SignOut />
-      ) : (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            return setVisibility(true);
-          }}
-        >
-          Log in
-        </Button>
-      )}
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          return setVisibility(true);
+        }}
+      >
+        <PersonIcon style={{ margin: "0 5px 0 0" }} />
+        Log in
+      </Button>
       {isVisible ? (
         <div className={classes.popUp}>
           <div className={classes.main}>

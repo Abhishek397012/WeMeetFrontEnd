@@ -13,7 +13,7 @@ const SignInFb = () => {
         onClick={signInWithFacebook}
         style={{ width: "100%" }}
       >
-        <Icon className="fab fa-facebook" style={{ paddingRight: "10px" }} />
+        <Icon className="fab fa-facebook" style={{ paddingRight: "30px" }} />
         Continue with Facebook
       </Button>
     </div>

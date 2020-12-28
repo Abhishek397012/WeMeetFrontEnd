@@ -42,9 +42,7 @@ const CommunityDashboard = () => {
     )
     
     return (
-        <div>
-            hello
-            <SidebarLayout>
+        <SidebarLayout>
             <div className="dashboard_wrapper">
                 <h6 className="dashboard_heading">Upcoming WeMeets</h6> 
                 <ShowUpcoming setDefault={!found}/>
@@ -77,8 +75,6 @@ const CommunityDashboard = () => {
                 </div>
             </div>
         </SidebarLayout>
-        </div>
-        
     )
 }
 

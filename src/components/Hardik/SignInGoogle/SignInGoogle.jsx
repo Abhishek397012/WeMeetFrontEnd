@@ -7,13 +7,13 @@ import { signInWithGoogle } from "../../../firebase/firebase.utils";
 
 const SignInGoogle = () => {
   return (
-    <div className="signin" style={{ margin: "5px" }}>
+    <div style={{ margin: "5px" }}>
       <Button
         variant="contained"
         onClick={signInWithGoogle}
         style={{ width: "100%" }}
       >
-        <Icon className="fab fa-google" style={{ paddingRight: "10px" }} />
+        <Icon className="fab fa-google" style={{ paddingRight: "30px" }} />
         Continue with Google
       </Button>
     </div>
