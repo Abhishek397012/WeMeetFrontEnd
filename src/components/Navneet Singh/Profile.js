@@ -4,6 +4,8 @@ import Circle from "./Circle";
 import ProfileUpcoming from "./ProfileUpcoming";
 import ProfilePast from "./ProfilePast";
 import Container from "./Container";
+import {auth} from '../../firebase/firebase.utils'
+
 
 const Profile = (props) => {
   const onSubmit = (event) => {
@@ -17,16 +19,28 @@ const Profile = (props) => {
     console.log(event.target.aboutme.value);
   };
 
-  const [userId, setUserId] = useState("");
+  const [user, setUser] = useState({
+    name: "", 
+    profilePicUrl: "", 
+    id: "", 
+    designation: "", 
+    organization: "", 
+    city: "", 
+    aboutMe: "", 
+    country: "", 
+    eventsHosted: [], 
+  })
 
-  const getUserId = () =>{
-      let id = props.match.params.userId;
-      console.log(id);
+  const getUser=()=>{
+    const name=auth.currentUser.displayName;
+    const profilePicUrl=auth.currentUser.photoURL;
+    const id=auth.currentUser.uid;
+    setUser({name, profilePicUrl, id})
+    console.log(user);
   }
 
   useEffect(()=>{
-    getUserId();
-    console.log(userId);
+    getUser()
   }, [])
 
 
@@ -36,22 +50,36 @@ const Profile = (props) => {
         <div className="user_details">
           <div className="profile_header">Details</div>
           <div className="detail_content_profile">
-            <Circle letter="N" />
+            <Circle url={user.profilePicUrl}/>
             <div className="profile_rem_content">
-              <div className="profile_name">User Name</div>
+              <div className="profile_name">{user.name}</div>
               <div className="profile_other">
-                <div className="other_stuff">
-                  <span className="label">Designation: </span>
-                  <span className="other_content">Student</span>
-                </div>
-                <div className="other_stuff">
-                  <span className="label">Location: </span>
-                  <span className="other_content">Delhi, India </span>
-                </div>
-                <div className="other_stuff">
-                  <span className="label">Organization: </span>
-                  <span className="other_content">NIT, Delhi </span>
-                </div>
+                {
+                  user.designation && (
+                    <div className="other_stuff">
+                      <span className="label">Designation: </span>
+                      <span className="other_content">{user.designation}</span>
+                    </div>
+                  )
+                }
+                {
+                  user.location && (
+                    <div className="other_stuff">
+                      <span className="label">Location: </span>
+                      <span className="other_content">{user.city}, {user.country} </span>
+                    </div>
+                  )
+                }
+
+                {
+                  user.organization && (                    
+                  <div className="other_stuff">
+                    <span className="label">Organization: </span>
+                    <span className="other_content">{user.organization} </span>
+                  </div>
+                  )
+                }
+
                 <div className="other_stuff">
                   <span className="other_content">
                     {" "}

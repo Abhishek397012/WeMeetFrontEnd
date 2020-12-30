@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import SignInGoogle from "../SignInGoogle/SignInGoogle";
 import SignInFb from "../SignInFb/SignInFb";
@@ -13,12 +13,26 @@ import { styles } from "./LogIn.styles";
 import { auth } from "../../../firebase/firebase.utils";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+import {login} from './apiLogin';
+
 const useStyles = makeStyles((theme) => styles);
 
 const LogIn = () => {
   const classes = useStyles();
   const [isVisible, setVisibility] = useState(false);
   const [user] = useAuthState(auth);
+
+  const userStuff = () =>{
+    setVisibility(false);
+  }
+
+  useEffect(() => {
+    if(user){
+      let name = user.displayName;
+      let fid = user.uid;
+      login({name, fid});
+    }
+  }, [user])
 
   return (
     <div>
@@ -42,7 +56,9 @@ const LogIn = () => {
                 style={{ cursor: "pointer" }}
               />
             </div>
-            {user ? setVisibility(false) : null}
+            {user ? (
+              userStuff()
+            ) : null}
             <SignInGoogle />
             <SignInFb />
           </div>

@@ -3,6 +3,7 @@ import SidebarLayout from './Sidebar';
 import './styles.css'
 import ShowUpcoming from './UpcomingDisplay'
 import video from './Video/walkthrough.mp4'
+import {auth} from '../../firebase/firebase.utils'
 
 
 const CommunityDashboard = (props) => {
@@ -12,12 +13,14 @@ const CommunityDashboard = (props) => {
     const [found, setFound] = useState(false);
     const [shown1, setShown1] = useState(false);
     const [shown2, setShown2] = useState(false);
-    const [userId, setUserId] = useState("");
 
-    const getUserId = () =>{
-        let id = props.match.params.userId;
-        setUserId(id)
+    const getUser=()=>{
+        const name=auth.currentUser.displayName;
+        const profilePicUrl=auth.currentUser.photoURL;
+        const id=auth.currentUser.uid;
+        // console.log(name,id, profilePicUrl);
     }
+    
 
     const loadUpcomingWemeet = () =>{
         // Get the information from the database
@@ -26,7 +29,7 @@ const CommunityDashboard = (props) => {
 
     useEffect(()=>{
         loadUpcomingWemeet();
-        getUserId();
+        getUser();
     }, [])
 
     const ShowWalkthrough = () => (
@@ -49,7 +52,7 @@ const CommunityDashboard = (props) => {
     )
     
     return (
-        <SidebarLayout id={userId}>
+        <SidebarLayout>
             <div className="dashboard_wrapper">
                 <h6 className="dashboard_heading">Upcoming WeMeets</h6> 
                 <ShowUpcoming setDefault={!found}/>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import LogIn from "../LogIn/LogIn";
 // import NewSessionForm from "../NewSessionForm/NewSessionForm";
@@ -9,6 +9,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 const UserDropdown = () => {
   const [user] = useAuthState(auth);
+
+
 
   return (
     <div>
