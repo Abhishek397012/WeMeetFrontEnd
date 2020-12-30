@@ -30,7 +30,13 @@ const LogIn = () => {
     if(user){
       let name = user.displayName;
       let fid = user.uid;
-      login({name, fid});
+      login({name, fid})
+        .then(data=>{
+          console.log(data);
+        })
+        .catch(err=>{
+          console.groupEnd(err);
+        })
     }
   }, [user])
 

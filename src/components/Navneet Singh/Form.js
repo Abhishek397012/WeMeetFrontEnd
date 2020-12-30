@@ -3,18 +3,6 @@ import Upload from "./Upload";
 export const Form = ({ onSubmit }) => {
   return (
     <form onSubmit={onSubmit}>
-      <div className="row">
-        <div className="form-group col-sm-12 col-md-4 col-lg-4">
-          <label htmlFor="image">Upload Image</label>
-          <input type="file" className="form-control" id="profileimage" />
-        </div>
-        {/* <Upload /> */}
-        <div className="form-group col-sm-12 col-md-8 col-lg-8">
-          <label htmlFor="name">Name</label>
-          <input className="form-control" id="name" />
-        </div>
-      </div>
-
       <div className="form-group">
         <label htmlFor="designation">Designation</label>
         <input type="text" className="form-control" id="designation" />
