@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import SignInGoogle from "../SignInGoogle/SignInGoogle";
 import SignInFb from "../SignInFb/SignInFb";
@@ -19,10 +19,6 @@ const LogIn = () => {
   const classes = useStyles();
   const [isVisible, setVisibility] = useState(false);
   const [user] = useAuthState(auth);
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <div>
