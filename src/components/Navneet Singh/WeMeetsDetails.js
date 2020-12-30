@@ -38,7 +38,7 @@ class WeMeetsCard extends Component {
         </div>
         <div className="row WeMeetBottomCard ">
           <h6>{this.props.registrationcount} Registrations</h6>
-          <Link to={`/wemeets/${this.props.id}`}>
+          <Link to={`/wemeets/${this.props.id}/summary`}>
             <button className="btn btn-dark btndisplay">View Details</button>
           </Link>
         </div>

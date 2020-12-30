@@ -5,13 +5,19 @@ import ShowUpcoming from './UpcomingDisplay'
 import video from './Video/walkthrough.mp4'
 
 
-const CommunityDashboard = () => {
+const CommunityDashboard = (props) => {
 
     const [upcomingEvent, setUpcomingEvent] = useState({});
     const [error, SetError] = useState(false);
     const [found, setFound] = useState(false);
     const [shown1, setShown1] = useState(false);
     const [shown2, setShown2] = useState(false);
+    const [userId, setUserId] = useState("");
+
+    const getUserId = () =>{
+        let id = props.match.params.userId;
+        setUserId(id)
+    }
 
     const loadUpcomingWemeet = () =>{
         // Get the information from the database
@@ -20,6 +26,7 @@ const CommunityDashboard = () => {
 
     useEffect(()=>{
         loadUpcomingWemeet();
+        getUserId();
     }, [])
 
     const ShowWalkthrough = () => (
@@ -42,7 +49,7 @@ const CommunityDashboard = () => {
     )
     
     return (
-        <SidebarLayout>
+        <SidebarLayout id={userId}>
             <div className="dashboard_wrapper">
                 <h6 className="dashboard_heading">Upcoming WeMeets</h6> 
                 <ShowUpcoming setDefault={!found}/>

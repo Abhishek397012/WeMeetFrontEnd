@@ -473,3 +473,80 @@ li {
   width: 200px;
   border-radius: 12%;
 }
+
+.top_part_summary{
+  flex-direction: column;
+  display: flex;
+}
+
+.bottom_part_summary{
+  border-top:rgb(135, 133, 143)
+}
+
+.btn_back_summary{
+  margin-left: 25px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  margin-right: 55px;
+}
+
+.btn_back_summary button:focus{
+  outline: 0;
+}
+.btn_back_summary button{
+  background-color:rgb(135, 133, 143);
+  color: white;
+  border-radius: 10px;
+  transition: all 0.3s ease 0s;
+
+}
+.btn_back_summary button:hover{
+  background-color: rgb(94, 90, 114);
+  transition: all 0.3s ease 0s;
+
+}
+
+.event_name_summary{
+  color:rgb(245, 245, 248);
+  margin-left: 25px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  font-size: 1.3em;
+}
+
+.event_date_summary{
+  color:rgb(32, 101, 204);
+  margin-left: 25px;
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.btn_sw_summ{
+  margin-left: 25px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  margin-right: 50px;
+}
+
+.btn_sw_summ button{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 1em;
+  font-weight: 700;
+  border-radius: 10px;
+  background-color: rgba(255, 251, 0, 0.89);
+  transition: all 0.3s ease 0s;
+
+}
+
+.btn_sw_summ button:hover{
+  background-color: rgba(228, 255, 72, 0.938);
+  transition: all 0.3s ease 0s;
+
+}
+  
+.btn_sw_summ button:focus{
+  outline: 0;
+}

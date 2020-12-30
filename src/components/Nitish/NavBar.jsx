@@ -3,14 +3,14 @@ import React from "react";
 import UserDropdown from "../Hardik/UserDropdown/UserDropdown";
 
 import Logo from "./logo.jpg";
-
+import {Link} from 'react-router-dom'
 import "./styles.css";
 
 function NavBar() {
   return (
     <nav className="navbar navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#root">
+        <Link className="navbar-brand" to="/">
           <img
             src={Logo}
             alt=""
@@ -19,7 +19,7 @@ function NavBar() {
             className="d-inline-block  change"
           />
           <span className="color"> WeMeet</span>
-        </a>
+        </Link>
         <div className="d-flex">
           <UserDropdown />
         </div>

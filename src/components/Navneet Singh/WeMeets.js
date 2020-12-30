@@ -1,10 +1,18 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import SidebarLayout from "./Sidebar";
 import "./styles.css";
 import Card from "./Card";
 import MonthlyWeMeets from "./MonthlyWeMeets";
 
-const CommunityDashboard = () => {
+const CommunityDashboard = (props) => {
+
+  const [userId, setUserId] = useState('');
+
+  useEffect(()=>{
+    const id=props.match.params.userId;
+    console.log(id);
+  }, [])
+
   return (
     <SidebarLayout>
       <div className="dashboard_wrapper">

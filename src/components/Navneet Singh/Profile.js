@@ -1,10 +1,11 @@
 import SidebarLayout from "./Sidebar";
+import React, {useState, useEffect} from 'react'
 import Circle from "./Circle";
 import ProfileUpcoming from "./ProfileUpcoming";
 import ProfilePast from "./ProfilePast";
 import Container from "./Container";
 
-const Profile = ({ user }) => {
+const Profile = (props) => {
   const onSubmit = (event) => {
     event.preventDefault(event);
     console.log(event.target.profileimage.value);
@@ -15,9 +16,23 @@ const Profile = ({ user }) => {
     console.log(event.target.country.value);
     console.log(event.target.aboutme.value);
   };
+
+  const [userId, setUserId] = useState("");
+
+  const getUserId = () =>{
+      let id = props.match.params.userId;
+      console.log(id);
+  }
+
+  useEffect(()=>{
+    getUserId();
+    console.log(userId);
+  }, [])
+
+
   return (
     <SidebarLayout>
-      <div className="profile_wrapper">
+      <div className="dashboard_wrapper">
         <div className="user_details">
           <div className="profile_header">Details</div>
           <div className="detail_content_profile">
