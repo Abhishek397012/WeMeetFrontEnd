@@ -32,7 +32,7 @@ export default function SimpleCard({ data }) {
           {time}
           <br />
           {bull}
-          {duration}
+          {duration} mins
         </Typography>
         <Typography
           variant="body2"
