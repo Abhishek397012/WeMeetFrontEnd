@@ -18,13 +18,14 @@ const theme = createMuiTheme({
   },
 });
 
-// set type = 0 for create form and 1 for edit form
+// set type = 1 for create form and 0 for edit form
 // must sent default values for data prop
-const NewSessionForm = ({ type }) => {
+const NewSessionForm = ({ type, data }) => {
   const classes = useStyles();
+  const { title, summary, datetime, duration } = data;
   const [formVisibility, setFormVisibility] = useState(false);
   const [formValues, setFormValues] = useState({
-    hostId: auth.currentUser.uid,
+    hostId: "",
     title: "",
     description: "",
     startDateTime: "",
@@ -37,7 +38,8 @@ const NewSessionForm = ({ type }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formValues);
+    setFormValues({ ...formValues, hostId: auth.currentUser.uid });
+    console.log(datetime);
     alert("form submitted");
     setFormVisibility(false);
   };
@@ -49,8 +51,20 @@ const NewSessionForm = ({ type }) => {
         color="primary"
         onClick={() => setFormVisibility(true)}
       >
-        <Icon className="fa fa-plus-circle" style={{ marginRight: "10px" }} />
-        {type ? `New Session` : `Edit`}
+        {Number(type) ? (
+          <>
+            <Icon
+              className="fa fa-plus-circle"
+              style={{ marginRight: "10px" }}
+            />
+            New Session
+          </>
+        ) : (
+          <>
+            <Icon className="fa fa-edit" style={{ marginRight: "10px" }} />
+            Edit
+          </>
+        )}
       </Button>
       {formVisibility ? (
         <div className={classes.popup}>
@@ -76,6 +90,7 @@ const NewSessionForm = ({ type }) => {
                   id="outlined-basic"
                   label="Session Title"
                   placeholder="Please add a clear name for session."
+                  defaultValue={title}
                   variant="outlined"
                 />
                 <TextField
@@ -86,6 +101,7 @@ const NewSessionForm = ({ type }) => {
                   id="outlined-basic"
                   label="Session Summary"
                   placeholder="Add a descriptive summary."
+                  defaultValue={summary}
                   variant="outlined"
                 />
                 <TextField
@@ -95,6 +111,7 @@ const NewSessionForm = ({ type }) => {
                   className={classes.datetime}
                   label="Start date and time"
                   type="datetime-local"
+                  defaultValue={datetime}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -110,6 +127,7 @@ const NewSessionForm = ({ type }) => {
                   label="Duration"
                   placeholder="Duration of session in minutes."
                   variant="outlined"
+                  defaultValue={duration}
                 />
               </div>
               <div className={classes.submit}>

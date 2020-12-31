@@ -6,7 +6,7 @@ import Profile from "./components/Navneet Singh/Profile";
 import NavBar from "./components/Nitish/NavBar";
 import LandingPage from "./components/Nitish/LandingPage.jsx";
 import BasicInfo from "./components/Navneet Singh/WeMeetSummary/BasicInfo";
-import Sessions from "./components/Navneet Singh/WeMeetSummary/Sessions";
+import SessionsPage from "./components/Hardik/Sessions/SessionsPage";
 import SpeakersHosts from "./components/Navneet Singh/WeMeetSummary/SpeakersHosts";
 import RegistrantsPage from "./components/Hardik/Registrants/RegistrantsPage";
 import EditProfile from "./components/Navneet Singh/EditProfile";
@@ -38,7 +38,7 @@ const App = () => {
           <Route
             exact
             path="/wemeets/:wemeetId/sessions"
-            component={Sessions}
+            component={SessionsPage}
           ></Route>
           <Route
             exact
