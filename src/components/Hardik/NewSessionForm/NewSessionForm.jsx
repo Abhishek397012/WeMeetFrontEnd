@@ -18,7 +18,9 @@ const theme = createMuiTheme({
   },
 });
 
-const NewSessionForm = () => {
+// set type = 0 for create form and 1 for edit form
+// must sent default values for data prop
+const NewSessionForm = ({ type }) => {
   const classes = useStyles();
   const [formVisibility, setFormVisibility] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -48,7 +50,7 @@ const NewSessionForm = () => {
         onClick={() => setFormVisibility(true)}
       >
         <Icon className="fa fa-plus-circle" style={{ marginRight: "10px" }} />
-        New Session
+        {type ? `New Session` : `Edit`}
       </Button>
       {formVisibility ? (
         <div className={classes.popup}>

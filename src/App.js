@@ -8,7 +8,7 @@ import LandingPage from "./components/Nitish/LandingPage.jsx";
 import BasicInfo from "./components/Navneet Singh/WeMeetSummary/BasicInfo";
 import Sessions from "./components/Navneet Singh/WeMeetSummary/Sessions";
 import SpeakersHosts from "./components/Navneet Singh/WeMeetSummary/SpeakersHosts";
-import Registrants from "./components/Navneet Singh/WeMeetSummary/Registrants";
+import RegistrantsPage from "./components/Hardik/Registrants/RegistrantsPage";
 import EditProfile from "./components/Navneet Singh/EditProfile";
 // import WeMeetSummary from './components/Navneet Singh/WeMeetSummary/'
 
@@ -48,7 +48,7 @@ const App = () => {
           <Route
             exact
             path="/wemeets/:wemeetId/registrants"
-            component={Registrants}
+            component={RegistrantsPage}
           ></Route>
         </Switch>
       </div>
