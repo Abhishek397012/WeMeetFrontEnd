@@ -75,7 +75,9 @@ const NewSessionForm = ({ type, data }) => {
               autoComplete="off"
             >
               <div className={classes.header}>
-                <h3 className={classes.title}>CREATE NEW SESSION</h3>
+                <h3 className={classes.title}>
+                  {Number(type) ? `CREATE NEW SESSION` : `EDIT DEATILS`}
+                </h3>
                 <Close
                   style={{ cursor: "pointer" }}
                   onClick={() => setFormVisibility(false)}
@@ -132,7 +134,7 @@ const NewSessionForm = ({ type, data }) => {
               </div>
               <div className={classes.submit}>
                 <Button type="submit" variant="contained" color="primary">
-                  CREATE NEW SESSION
+                  {Number(type) ? `CREATE NEW SESSION` : `SAVE DEATILS`}
                 </Button>
               </div>
             </form>
