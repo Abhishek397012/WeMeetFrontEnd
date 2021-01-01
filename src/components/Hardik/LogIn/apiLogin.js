@@ -1,14 +1,11 @@
-
+import {API} from '../../../config'
 
 export const login = (user)=>{
-    console.log(user.name, user.fid);
-    const url="http://localhost:8000/api/auth/login";
-    return fetch((url), {
+    return fetch(`${API}/auth/login`, {
         method: "POST",
         headers: {
             Accept: 'application/json', 
             "Content-Type": "application/json", 
-            "Access-Control-Allow-Origin": "*"
         }, 
         body: JSON.stringify(user)
     })
@@ -18,4 +15,22 @@ export const login = (user)=>{
     .catch(err=>{
         console.log(err);
     })
+}
+
+export const authenticate = (data, next)=>{
+    if(typeof window != undefined){
+        localStorage.setItem('jwt', JSON.stringify(data));
+        next();
+    }
+} 
+
+export const isAuthenticated = ()=>{
+    if(typeof window == 'undefined'){
+        return false;
+    }
+    if(localStorage.getItem('jwt')){
+        return JSON.parse(localStorage.getItem('jwt'))
+    }else{
+        return false;
+    }
 }

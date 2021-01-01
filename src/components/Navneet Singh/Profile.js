@@ -5,21 +5,35 @@ import ProfileUpcoming from "./ProfileUpcoming";
 import ProfilePast from "./ProfilePast";
 import Container from "./Container";
 import {auth} from '../../firebase/firebase.utils'
+import {getUserDetails, update} from './apiDash'
+import {isAuthenticated} from '../Hardik/LogIn/apiLogin'
 
 
 const Profile = (props) => {
+
+  const {token, user} = isAuthenticated();
+
   const onSubmit = (event) => {
     event.preventDefault(event);
-    console.log(event.target.profileimage.value);
-    console.log(event.target.name.value);
-    console.log(event.target.designation.value);
-    console.log(event.target.organization.value);
-    console.log(event.target.city.value);
-    console.log(event.target.country.value);
-    console.log(event.target.aboutme.value);
+    const id = user.fid;
+    const User = {
+      fid: id, 
+      designation: event.target.designation.value, 
+      organization: event.target.organization.value, 
+      city: event.target.city.value,
+      aboutMe: event.target.aboutme.value, 
+      country: event.target.country.value
+    }
+    update(id, token, User)
+      .then(data=>{
+        getUser();
+      })
+      .catch(err=>{
+        console.log(err);
+      })
   };
 
-  const [user, setUser] = useState({
+  const [USER, setUser] = useState({
     name: "", 
     profilePicUrl: "", 
     id: "", 
@@ -32,11 +46,15 @@ const Profile = (props) => {
   })
 
   const getUser=()=>{
-    const name=auth.currentUser.displayName;
-    const profilePicUrl=auth.currentUser.photoURL;
-    const id=auth.currentUser.uid;
-    setUser({name, profilePicUrl, id})
-    console.log(user);
+    const id=user.fid;
+    getUserDetails(id)
+      .then(data=>{
+          console.log("Profile: ", data);
+          setUser(data);
+      })
+      .catch(err=>{
+        console.log(err);
+      })
   }
 
   useEffect(()=>{
@@ -50,32 +68,32 @@ const Profile = (props) => {
         <div className="user_details">
           <div className="profile_header">Details</div>
           <div className="detail_content_profile">
-            <Circle url={user.profilePicUrl}/>
+            <Circle url={USER.profilePicUrl}/>
             <div className="profile_rem_content">
-              <div className="profile_name">{user.name}</div>
+              <div className="profile_name">{USER.name}</div>
               <div className="profile_other">
                 {
-                  user.designation && (
+                  USER.designation && (
                     <div className="other_stuff">
                       <span className="label">Designation: </span>
-                      <span className="other_content">{user.designation}</span>
+                      <span className="other_content">{USER.designation}</span>
                     </div>
                   )
                 }
                 {
-                  user.location && (
+                  USER.city && USER.country && (
                     <div className="other_stuff">
                       <span className="label">Location: </span>
-                      <span className="other_content">{user.city}, {user.country} </span>
+                      <span className="other_content">{USER.city}, {USER.country} </span>
                     </div>
                   )
                 }
 
                 {
-                  user.organization && (                    
+                  USER.organization && (                    
                   <div className="other_stuff">
                     <span className="label">Organization: </span>
-                    <span className="other_content">{user.organization} </span>
+                    <span className="other_content">{USER.organization} </span>
                   </div>
                   )
                 }

@@ -13,7 +13,7 @@ import { styles } from "./LogIn.styles";
 import { auth } from "../../../firebase/firebase.utils";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import {login} from './apiLogin';
+import {login, authenticate} from './apiLogin';
 
 const useStyles = makeStyles((theme) => styles);
 
@@ -30,12 +30,20 @@ const LogIn = () => {
     if(user){
       let name = user.displayName;
       let fid = user.uid;
-      login({name, fid})
+      let profilePicUrl = user.photoURL
+
+
+      login({name, fid, profilePicUrl, designation: "", organization: "", city: "", aboutMe: "", eventsHosted: [], country: ""})
         .then(data=>{
-          console.log(data);
+          authenticate(
+              data, 
+              ()=>{
+                  console.log(data);
+              }
+          )
         })
         .catch(err=>{
-          console.groupEnd(err);
+          console.log(err);
         })
     }
   }, [user])

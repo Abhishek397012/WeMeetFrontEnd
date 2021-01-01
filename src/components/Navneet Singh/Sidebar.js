@@ -3,19 +3,34 @@ import { Link } from "react-router-dom";
 import Dashboard from "./CommunityDashboard";
 import WeMeets from "./WeMeets";
 import {auth} from '../../firebase/firebase.utils'
+import {getUserDetails} from './apiDash'
+import {isAuthenticated} from '../Hardik/LogIn/apiLogin'
 
 const Sidebar = ({children}) => {
 
-  const[user, setUser] = useState({
+  const {user} = isAuthenticated()
+
+  const[USER, setUser] = useState({
     name: "", 
-    profilePicUrl: ""
+    profilePicUrl: "", 
+    id: "", 
+    designation: "", 
+    organization: "", 
+    city: "", 
+    aboutMe: "", 
+    country: "", 
+    eventsHosted: [], 
   })
 
   const getUser = () => {
-    setUser({
-      name: auth.currentUser.displayName,
-      profilePicUrl: auth.currentUser.photoURL
-    })
+    const id=user.fid;
+    getUserDetails(id)
+      .then(data=>{
+          setUser(data);
+      })
+      .catch(err=>{
+        console.log(err);
+      })
   }
 
   useEffect(() => {
@@ -26,8 +41,8 @@ const Sidebar = ({children}) => {
     <div className="dash_container">
       <div className="sidebar">
         <div className="top-part-sidebar">
-          <img className="name_img" src={user.profilePicUrl} alt="Profile Img"/>
-          <p className="header_Name">{user.name}</p>
+          <img className="name_img" src={USER.profilePicUrl} alt="Profile Img"/>
+          <p className="header_Name">{USER.name}</p>
           <p className="header_Description">You are an Admin</p>
         </div>
         <nav className="clearfix s-navbar">
