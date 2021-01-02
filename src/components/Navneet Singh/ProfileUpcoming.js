@@ -30,7 +30,7 @@ const ProfileUpcoming = () =>{
     return (
         <Fragment>
             {
-                upcoming && (
+                upcoming.length && (
                     <div className="profile_upcoming">
                         <div className="profile_header">Upcoming Events</div>
                         <div className="upcoming_profile_content">

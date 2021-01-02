@@ -30,7 +30,7 @@ const ProfilePast = () =>{
     return (
         <Fragment>
             {
-                past && (
+                past.length && (
                     <div className="profile_upcoming">
                         <div className="profile_header">Past Events</div>
                         <div className="upcoming_profile_content">

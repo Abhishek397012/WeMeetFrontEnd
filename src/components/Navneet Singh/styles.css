@@ -146,6 +146,11 @@ li {
     Upcoming Event Display
   */
 
+.upcoming_label{
+  color: rgb(175, 170, 194);
+  font-size: 18px;
+}
+
 .upcoming_wrapper {
   background-color: rgb(50, 48, 59);
   width: 100%;
@@ -166,6 +171,10 @@ li {
     padding: 24px;
   }
 }
+.upcoming_content_{
+  color:rgb(73, 45, 253);
+  font-size: 1.2em;
+}
 
 .upcoming_content {
   width: 100%;
@@ -173,46 +182,38 @@ li {
 }
 
 .upcoming_left {
-  border: 1px solid red;
 }
 
 .upcoming_right {
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
 }
 
 .upcoming_right_up {
-  border: 1px solid yellow;
   width: 100%;
   flex-grow: 1.5;
 }
 
 .upcoming_right_down {
-  border: 1px solid yellow;
   width: 100%;
   flex-grow: 1;
   display: flex;
 }
 
 .urdn {
-  border: 1px solid blue;
   flex-grow: 0.7;
 }
 
-.urdh {
+/* .urdh {
   border: 1px solid blue;
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
-}
+} */
 
-.urdh_name {
-  border: 1px solid green;
-}
+
 
 .urdh_button {
-  border: 1px solid green;
   align-self: center;
 }
 
