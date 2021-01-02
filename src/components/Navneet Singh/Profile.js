@@ -4,29 +4,60 @@ import Circle from "./Circle";
 import ProfileUpcoming from "./ProfileUpcoming";
 import ProfilePast from "./ProfilePast";
 import Container from "./Container";
+import {auth} from '../../firebase/firebase.utils'
+import {getUserDetails, update} from './apiDash'
+import {isAuthenticated} from '../Hardik/LogIn/apiLogin'
+
 
 const Profile = (props) => {
+
+  const {token, user} = isAuthenticated();
+
   const onSubmit = (event) => {
     event.preventDefault(event);
-    console.log(event.target.profileimage.value);
-    console.log(event.target.name.value);
-    console.log(event.target.designation.value);
-    console.log(event.target.organization.value);
-    console.log(event.target.city.value);
-    console.log(event.target.country.value);
-    console.log(event.target.aboutme.value);
+    const id = user.fid;
+    const User = {
+      fid: id, 
+      designation: event.target.designation.value, 
+      organization: event.target.organization.value, 
+      city: event.target.city.value,
+      aboutMe: event.target.aboutme.value, 
+      country: event.target.country.value
+    }
+    update(id, token, User)
+      .then(data=>{
+        getUser();
+      })
+      .catch(err=>{
+        console.log(err);
+      })
   };
 
-  const [userId, setUserId] = useState("");
+  const [USER, setUser] = useState({
+    name: "", 
+    profilePicUrl: "", 
+    id: "", 
+    designation: "", 
+    organization: "", 
+    city: "", 
+    aboutMe: "", 
+    country: "", 
+    eventsHosted: [], 
+  })
 
-  const getUserId = () =>{
-      let id = props.match.params.userId;
-      console.log(id);
+  const getUser=()=>{
+    const id=user.fid;
+    getUserDetails(id)
+      .then(data=>{
+          setUser(data);
+      })
+      .catch(err=>{
+        console.log(err);
+      })
   }
 
   useEffect(()=>{
-    getUserId();
-    console.log(userId);
+    getUser()
   }, [])
 
 
@@ -36,22 +67,36 @@ const Profile = (props) => {
         <div className="user_details">
           <div className="profile_header">Details</div>
           <div className="detail_content_profile">
-            <Circle letter="N" />
+            <Circle url={USER.profilePicUrl}/>
             <div className="profile_rem_content">
-              <div className="profile_name">User Name</div>
+              <div className="profile_name">{USER.name}</div>
               <div className="profile_other">
-                <div className="other_stuff">
-                  <span className="label">Designation: </span>
-                  <span className="other_content">Student</span>
-                </div>
-                <div className="other_stuff">
-                  <span className="label">Location: </span>
-                  <span className="other_content">Delhi, India </span>
-                </div>
-                <div className="other_stuff">
-                  <span className="label">Organization: </span>
-                  <span className="other_content">NIT, Delhi </span>
-                </div>
+                {
+                  USER.designation && (
+                    <div className="other_stuff">
+                      <span className="label">Designation: </span>
+                      <span className="other_content">{USER.designation}</span>
+                    </div>
+                  )
+                }
+                {
+                  USER.city && USER.country && (
+                    <div className="other_stuff">
+                      <span className="label">Location: </span>
+                      <span className="other_content">{USER.city}, {USER.country} </span>
+                    </div>
+                  )
+                }
+
+                {
+                  USER.organization && (                    
+                  <div className="other_stuff">
+                    <span className="label">Organization: </span>
+                    <span className="other_content">{USER.organization} </span>
+                  </div>
+                  )
+                }
+
                 <div className="other_stuff">
                   <span className="other_content">
                     {" "}
@@ -62,14 +107,8 @@ const Profile = (props) => {
             </div>
           </div>
         </div>
-        <div className="profile_upcoming">
-          <div className="profile_header">Upcoming Events</div>
           <ProfileUpcoming />
-        </div>
-        <div className="profile_past">
-          <div className="profile_header">Past Event</div>
           <ProfilePast />
-        </div>
       </div>
     </SidebarLayout>
   );

@@ -3,30 +3,43 @@ import SidebarLayout from './Sidebar';
 import './styles.css'
 import ShowUpcoming from './UpcomingDisplay'
 import video from './Video/walkthrough.mp4'
-
+import {isAuthenticated} from '../Hardik/LogIn/apiLogin'
+import {getLatestUpcoming} from './apiDash'
 
 const CommunityDashboard = (props) => {
+
+    const {user}=isAuthenticated()
 
     const [upcomingEvent, setUpcomingEvent] = useState({});
     const [error, SetError] = useState(false);
     const [found, setFound] = useState(false);
     const [shown1, setShown1] = useState(false);
     const [shown2, setShown2] = useState(false);
-    const [userId, setUserId] = useState("");
 
-    const getUserId = () =>{
-        let id = props.match.params.userId;
-        setUserId(id)
-    }
+
+    
 
     const loadUpcomingWemeet = () =>{
         // Get the information from the database
-
+        getLatestUpcoming(user._id)
+            .then(data=>{
+                setUpcomingEvent(data.UpcomingWemeet);
+                console.log(upcomingEvent)
+                if(upcomingEvent){
+                    setFound(true);
+                }
+                else{
+                    setFound(false)
+                }
+            })
+            .catch(err=>{
+                SetError(err);
+                console.log(err);
+            })
     }
 
     useEffect(()=>{
         loadUpcomingWemeet();
-        getUserId();
     }, [])
 
     const ShowWalkthrough = () => (
@@ -49,10 +62,10 @@ const CommunityDashboard = (props) => {
     )
     
     return (
-        <SidebarLayout id={userId}>
+        <SidebarLayout>
             <div className="dashboard_wrapper">
                 <h6 className="dashboard_heading">Upcoming WeMeets</h6> 
-                <ShowUpcoming setDefault={!found}/>
+                <ShowUpcoming setDefault={!found} wemeet={upcomingEvent}/>
                 <div className="dashboard_bottom_wrapper">
                     <div className="dashboard_bottom_content">
                         <div className="row">

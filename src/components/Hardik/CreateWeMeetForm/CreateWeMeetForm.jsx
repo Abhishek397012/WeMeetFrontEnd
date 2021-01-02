@@ -7,10 +7,10 @@ import Close from "@material-ui/icons/Close";
 import TextField from "@material-ui/core/TextField";
 import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
+import { isAuthenticated } from "../LogIn/apiLogin";
+import { createWeMeet } from "./apiCreateWemeet";
 
 import { useStyles } from "./CreateWeMeetForm.styles";
-
-import { auth } from "../../../firebase/firebase.utils";
 
 const theme = createMuiTheme({
   palette: {
@@ -19,18 +19,22 @@ const theme = createMuiTheme({
 });
 
 const CreateWeMeetForm = ({ history }) => {
+  const { user } = isAuthenticated();
+
   const classes = useStyles();
   const [formVisibility, setFormVisibility] = useState(false);
   const [lounge, loungeStatus] = useState(false);
   const [meetVisibility, setMeetVisibility] = useState(false);
   const [formValues, setFormValues] = useState({
-    hostId: auth.currentUser.uid,
+    hostId: user._id,
     title: "",
     description: "",
     startDateTime: "",
     endDateTime: "",
     visibility: "Private",
     loungeTables: "0",
+    registrationCount: 0,
+    status: 0,
   });
 
   const handleChange = (event) => {
@@ -39,8 +43,16 @@ const CreateWeMeetForm = ({ history }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formValues);
-    alert("form submitted");
+
+    createWeMeet(user._id, formValues)
+      .then((data) => {
+        console.log(data);
+        alert("WeMeet Created Successfully!!");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     setFormVisibility(false);
     history.push("/dashboard");
   };

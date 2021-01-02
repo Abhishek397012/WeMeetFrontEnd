@@ -8,6 +8,9 @@ import backgroundImg from "./background.jpg";
 import "./styles.css";
 
 const LandingPage = () => {
+
+
+
   return (
     <>
       <img src={backgroundImg} alt="Snow" className="size"/>

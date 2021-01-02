@@ -3,14 +3,20 @@ import SidebarLayout from "./Sidebar";
 import "./styles.css";
 import Card from "./Card";
 import MonthlyWeMeets from "./MonthlyWeMeets";
+import {auth} from '../../firebase/firebase.utils'
+
 
 const CommunityDashboard = (props) => {
 
-  const [userId, setUserId] = useState('');
+  const getUser=()=>{
+    const name=auth.currentUser.displayName;
+    const profilePicUrl=auth.currentUser.photoURL;
+    const id=auth.currentUser.uid;
+    // console.log(name,id, profilePicUrl);
+  }
 
   useEffect(()=>{
-    const id=props.match.params.userId;
-    console.log(id);
+    getUser()
   }, [])
 
   return (
