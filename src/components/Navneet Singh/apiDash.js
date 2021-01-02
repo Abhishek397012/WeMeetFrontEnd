@@ -38,8 +38,22 @@ export const getUpcoming = (id) => {
             "Content-Type": "application/json",
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const getPast = (id) => {
+    return fetch(`${API}/wemeets/${id}/allpast`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        }
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
 };

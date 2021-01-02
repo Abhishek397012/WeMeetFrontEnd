@@ -1,8 +1,9 @@
 import WeMeetsCard from "./WeMeetsDetails";
 import './styles.css'
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, Fragment} from 'react'
 import {isAuthenticated} from '../Hardik/LogIn/apiLogin'
-import {getUpcoming} from './apiDash'
+import {getUpcoming, getPast} from './apiDash'
+import moment from 'moment'
 
 const ProfileUpcoming = () =>{
 
@@ -13,45 +14,45 @@ const ProfileUpcoming = () =>{
     const getUpcomingWemeets = () => {
         getUpcoming(user._id)
         .then(data=>{
-            console.log(data);
+            setUpcoming(data);
+            console.log("Upcoming Wemeets: ",data);
         })
         .catch(err=>{
             console.log(err);
         })
     }
         
+
     useEffect(() => {
         getUpcomingWemeets()
     }, [])
 
     return (
-        <div className="upcoming_profile_content">
-            <WeMeetsCard
-                createdon="Sat 20 Dec 2020"
-                status="Upcoming"
-                host="191210037 Community"
-                title="Backend Discussion"
-                meetingtime="12:00 PM - 1:00 PM IST"
-                id="12345"
-            />
-            <WeMeetsCard
-                createdon="Sat 20 Dec 2020"
-                status="Upcoming"
-                host="191210037 Community"
-                title="Backend Discussion"
-                meetingtime="12:00 PM - 1:00 PM IST"
-                id="12345"
-            />
-            <WeMeetsCard
-                createdon="Sat 20 Dec 2020"
-                status="Upcoming"
-                host="191210037 Community"
-                title="Backend Discussion"
-                meetingtime="12:00 PM - 1:00 PM IST"
-                id="12345"
-            />
-
-        </div>
+        <Fragment>
+            {
+                upcoming && (
+                    <div className="profile_upcoming">
+                        <div className="profile_header">Upcoming Events</div>
+                        <div className="upcoming_profile_content">
+                            {
+                                upcoming.map(event=>(
+                                        <WeMeetsCard
+                                            createdon={moment(event.createdAt).fromNow().toUpperCase()}
+                                            status="Upcoming"
+                                            host={user.name}
+                                            title={event.title}
+                                            meetingtime="12:00 PM - 1:00 PM IST"
+                                            id={event._id}
+                                        />
+                                ))
+                            }
+                        </div>
+                    </div>
+                )
+            }
+        </Fragment>
+        
+        
     )
 } 
 

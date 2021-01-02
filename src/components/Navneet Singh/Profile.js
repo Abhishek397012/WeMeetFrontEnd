@@ -49,7 +49,6 @@ const Profile = (props) => {
     const id=user.fid;
     getUserDetails(id)
       .then(data=>{
-          console.log("Profile: ", data);
           setUser(data);
       })
       .catch(err=>{
@@ -108,14 +107,8 @@ const Profile = (props) => {
             </div>
           </div>
         </div>
-        <div className="profile_upcoming">
-          <div className="profile_header">Upcoming Events</div>
           <ProfileUpcoming />
-        </div>
-        <div className="profile_past">
-          <div className="profile_header">Past Event</div>
           <ProfilePast />
-        </div>
       </div>
     </SidebarLayout>
   );
