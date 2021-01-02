@@ -13,7 +13,7 @@ import { styles } from "./LogIn.styles";
 import { auth } from "../../../firebase/firebase.utils";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import {login, authenticate} from './apiLogin';
+import { login, authenticate } from "./apiLogin";
 
 const useStyles = makeStyles((theme) => styles);
 
@@ -22,31 +22,37 @@ const LogIn = () => {
   const [isVisible, setVisibility] = useState(false);
   const [user] = useAuthState(auth);
 
-  const userStuff = () =>{
+  const userStuff = () => {
     setVisibility(false);
-  }
+  };
 
   useEffect(() => {
-    if(user){
+    if (user) {
       let name = user.displayName;
       let fid = user.uid;
-      let profilePicUrl = user.photoURL
+      let profilePicUrl = user.photoURL;
 
-
-      login({name, fid, profilePicUrl, designation: "", organization: "", city: "", aboutMe: "", eventsHosted: [], country: ""})
-        .then(data=>{
-          authenticate(
-              data, 
-              ()=>{
-                  console.log(data);
-              }
-          )
+      login({
+        name,
+        fid,
+        profilePicUrl,
+        designation: "",
+        organization: "",
+        city: "",
+        aboutMe: "",
+        eventsHosted: [],
+        country: "",
+      })
+        .then((data) => {
+          authenticate(data, () => {
+            console.log(data);
+          });
         })
-        .catch(err=>{
+        .catch((err) => {
           console.log(err);
-        })
+        });
     }
-  }, [user])
+  }, [user]);
 
   return (
     <div>
@@ -70,9 +76,7 @@ const LogIn = () => {
                 style={{ cursor: "pointer" }}
               />
             </div>
-            {user ? (
-              userStuff()
-            ) : null}
+            {user ? userStuff() : null}
             <SignInGoogle />
             <SignInFb />
           </div>
