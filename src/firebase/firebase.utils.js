@@ -3,7 +3,7 @@ import "firebase/firestore";
 import "firebase/auth";
 
 const config = {
-  apiKey: "AIzaSyDd5iwGRCyP1RzIqmS10u9fYUOZ3i9XYl4",
+  apiKey: process.env.REACT_APP_FIREBASE_API,
   authDomain: "wemeet-69849.firebaseapp.com",
   projectId: "wemeet-69849",
   storageBucket: "wemeet-69849.appspot.com",
