@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import SignInGoogle from "../SignInGoogle/SignInGoogle";
 import SignInFb from "../SignInFb/SignInFb";
+import ErrorBoundry from "../ErrorBoundry/ErrorBoundry";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -77,8 +78,10 @@ const LogIn = () => {
               />
             </div>
             {user ? userStuff() : null}
-            <SignInGoogle />
-            <SignInFb />
+            <ErrorBoundry>
+              <SignInGoogle />
+              <SignInFb />
+            </ErrorBoundry>
           </div>
         </div>
       ) : null}

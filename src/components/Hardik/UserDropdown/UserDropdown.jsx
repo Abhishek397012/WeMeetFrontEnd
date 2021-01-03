@@ -2,6 +2,7 @@ import React from "react";
 
 import LogIn from "../LogIn/LogIn";
 import DropdownMain from "../../Nitish/DropdownMain";
+import ErrorBoundry from "../ErrorBoundry/ErrorBoundry";
 
 import { auth } from "../../../firebase/firebase.utils";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -16,7 +17,9 @@ const UserDropdown = () => {
           <DropdownMain />
         </div>
       ) : (
-        <LogIn />
+        <ErrorBoundry>
+          <LogIn />
+        </ErrorBoundry>
       )}
     </>
   );
