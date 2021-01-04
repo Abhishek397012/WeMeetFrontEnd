@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 
 import CreateWeMeetForm from "../Hardik/CreateWeMeetForm/CreateWeMeetForm";
 import SignOut from "../Hardik/SignOut/SignOut";
-import {Link} from 'react-router-dom'
-import DashboardIcon from "@material-ui/icons/Dashboard";
+
+import Button from "@material-ui/core/Button";
 import PersonIcon from "@material-ui/icons/Person";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 
 import { auth } from "../../firebase/firebase.utils";
 
 import "./DropdownMain.css";
 
-const DropdownMain = () => { 
+const DropdownMain = ({ history }) => {
   const [hidden, toggleHidden] = useState(false);
 
   return (
@@ -27,12 +29,26 @@ const DropdownMain = () => {
         </div>
         {hidden ? (
           <div className="dropdown-content">
-            <Link to={`/dashboard`} style={{marginBottom: "10px", marginTop: "10px"}}>
-              <DashboardIcon /> Dashbord
-            </Link>
-            <Link to={`/profile`} style={{marginBottom: "10px", marginBottom: "12px"}}>
-              <PersonIcon /> Profile
-            </Link>
+            <Button
+              onClick={() => {
+                history.push("/profile");
+                toggleHidden(!hidden);
+              }}
+              variant="contained"
+              style={{ marginBottom: "5px" }}
+            >
+              <PersonIcon style={{ marginRight: "10px" }} /> My Profile
+            </Button>
+            <Button
+              onClick={() => {
+                history.push("/dashboard");
+                toggleHidden(!hidden);
+              }}
+              variant="contained"
+              style={{ marginBottom: "5px" }}
+            >
+              <DashboardIcon style={{ marginRight: "10px" }} /> Dashbord
+            </Button>
             <SignOut />
           </div>
         ) : null}
@@ -41,4 +57,4 @@ const DropdownMain = () => {
   );
 };
 
-export default DropdownMain;
+export default withRouter(DropdownMain);

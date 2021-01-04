@@ -383,7 +383,7 @@ li {
 .profile_wrapper {
   box-sizing: border-box;
   background-color: rgb(19, 18, 26);
-  max-height: calc(100vh);
+  max-height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   padding-left: 2em;

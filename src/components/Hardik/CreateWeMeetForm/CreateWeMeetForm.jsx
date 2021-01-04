@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -6,12 +7,10 @@ import Close from "@material-ui/icons/Close";
 import TextField from "@material-ui/core/TextField";
 import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
-import {isAuthenticated} from '../LogIn/apiLogin'
-import {createWeMeet} from './apiCreateWemeet'
+import { isAuthenticated } from "../LogIn/apiLogin";
+import { createWeMeet } from "./apiCreateWemeet";
 
 import { useStyles } from "./CreateWeMeetForm.styles";
-
-import { auth } from "../../../firebase/firebase.utils";
 
 const theme = createMuiTheme({
   palette: {
@@ -19,9 +18,8 @@ const theme = createMuiTheme({
   },
 });
 
-const CreateWeMeetForm = () => {
-
-  const {user} = isAuthenticated();
+const CreateWeMeetForm = ({ history }) => {
+  const { user } = isAuthenticated();
 
   const classes = useStyles();
   const [formVisibility, setFormVisibility] = useState(false);
@@ -35,10 +33,9 @@ const CreateWeMeetForm = () => {
     endDateTime: "",
     visibility: "Private",
     loungeTables: "0",
-    registrationCount: 0, 
-    status: 0
+    registrationCount: 0,
+    status: 0,
   });
-
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
@@ -46,17 +43,18 @@ const CreateWeMeetForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     createWeMeet(user._id, formValues)
-      .then(data=>{
+      .then((data) => {
         console.log(data);
-        alert("WeMeet Created Successfully!!")
+        alert("WeMeet Created Successfully!!");
       })
-      .catch(err=>{
+      .catch((err) => {
         console.log(err);
-      })
+      });
 
     setFormVisibility(false);
+    history.push("/dashboard");
   };
 
   const handleLounge = (event) => {
@@ -189,4 +187,4 @@ const CreateWeMeetForm = () => {
   );
 };
 
-export default CreateWeMeetForm;
+export default withRouter(CreateWeMeetForm);

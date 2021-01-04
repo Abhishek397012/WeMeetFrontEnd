@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
@@ -6,8 +6,6 @@ import Icon from "@material-ui/core/Icon";
 import { signInWithGoogle } from "../../../firebase/firebase.utils";
 
 const SignInGoogle = () => {
-
-
   return (
     <div style={{ margin: "5px" }}>
       <Button

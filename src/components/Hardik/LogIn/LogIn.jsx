@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import SignInGoogle from "../SignInGoogle/SignInGoogle";
 import SignInFb from "../SignInFb/SignInFb";
+import ErrorBoundry from "../ErrorBoundry/ErrorBoundry";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -13,7 +14,7 @@ import { styles } from "./LogIn.styles";
 import { auth } from "../../../firebase/firebase.utils";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import {login, authenticate} from './apiLogin';
+import { login, authenticate } from "./apiLogin";
 
 const useStyles = makeStyles((theme) => styles);
 
@@ -22,12 +23,12 @@ const LogIn = () => {
   const [isVisible, setVisibility] = useState(false);
   const [user] = useAuthState(auth);
 
-  const userStuff = () =>{
+  const userStuff = () => {
     setVisibility(false);
-  }
+  };
 
   useEffect(() => {
-    if(user){
+    if (user) {
       let name = user.displayName;
       let fid = user.uid;
       let profilePicUrl = user.photoURL
@@ -42,11 +43,11 @@ const LogIn = () => {
               }
           )
         })
-        .catch(err=>{
+        .catch((err) => {
           console.log(err);
-        })
+        });
     }
-  }, [user])
+  }, [user]);
 
   return (
     <div>
@@ -70,11 +71,11 @@ const LogIn = () => {
                 style={{ cursor: "pointer" }}
               />
             </div>
-            {user ? (
-              userStuff()
-            ) : null}
-            <SignInGoogle />
-            <SignInFb />
+            {user ? userStuff() : null}
+            <ErrorBoundry>
+              <SignInGoogle />
+              <SignInFb />
+            </ErrorBoundry>
           </div>
         </div>
       ) : null}
