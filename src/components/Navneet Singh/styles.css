@@ -148,7 +148,7 @@ li {
 
 .upcoming_label{
   color: rgb(175, 170, 194);
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .upcoming_wrapper {
@@ -172,8 +172,8 @@ li {
   }
 }
 .upcoming_content_{
-  color:rgb(144, 134, 209);
-  font-size: 1.2em;
+  color:rgb(108, 86, 247);
+  font-size: 1.3em;
 }
 
 .upcoming_content {

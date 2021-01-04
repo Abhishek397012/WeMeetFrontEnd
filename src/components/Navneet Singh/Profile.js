@@ -1,65 +1,62 @@
 import SidebarLayout from "./Sidebar";
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import Circle from "./Circle";
 import ProfileUpcoming from "./ProfileUpcoming";
 import ProfilePast from "./ProfilePast";
 import Container from "./Container";
-import {auth} from '../../firebase/firebase.utils'
-import {getUserDetails, update} from './apiDash'
-import {isAuthenticated} from '../Hardik/LogIn/apiLogin'
-
+import { auth } from "../../firebase/firebase.utils";
+import { getUserDetails, update } from "./apiDash";
+import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
 
 const Profile = (props) => {
-
-  const {token, user} = isAuthenticated();
+  const { token, user } = isAuthenticated();
 
   const onSubmit = (event) => {
     event.preventDefault(event);
     const id = user.fid;
     const User = {
-      fid: id, 
-      designation: event.target.designation.value, 
-      organization: event.target.organization.value, 
+      fid: id,
+      designation: event.target.designation.value,
+      organization: event.target.organization.value,
       city: event.target.city.value,
-      aboutMe: event.target.aboutme.value, 
-      country: event.target.country.value
-    }
+      aboutMe: event.target.aboutme.value,
+      country: event.target.country.value,
+    };
     update(id, token, User)
-      .then(data=>{
+      .then((data) => {
         getUser();
       })
-      .catch(err=>{
+      .catch((err) => {
         console.log(err);
-      })
+      });
   };
 
   const [USER, setUser] = useState({
-    name: "", 
-    profilePicUrl: "", 
-    id: "", 
-    designation: "", 
-    organization: "", 
-    city: "", 
-    aboutMe: "", 
-    country: "", 
-    eventsHosted: [], 
-  })
+    name: "",
+    profilePicUrl: "",
+    id: "",
+    designation: "",
+    organization: "",
+    city: "",
+    aboutMe: "",
+    country: "",
+    eventsHosted: [],
+  });
 
-  const getUser=()=>{
-    const id=user.fid;
+  const getUser = () => {
+    const id = user.fid;
     getUserDetails(id)
-      .then(data=>{
-          setUser(data);
+      .then((data) => {
+        setUser(data);
       })
-      .catch(err=>{
+      .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 
-  useEffect(()=>{
-    getUser()
-  }, [])
-
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <SidebarLayout>
@@ -67,35 +64,31 @@ const Profile = (props) => {
         <div className="user_details">
           <div className="profile_header">Details</div>
           <div className="detail_content_profile">
-            <Circle url={USER.profilePicUrl}/>
+            <Circle url={USER.profilePicUrl} />
             <div className="profile_rem_content">
               <div className="profile_name">{USER.name}</div>
               <div className="profile_other">
-                {
-                  USER.designation && (
-                    <div className="other_stuff">
-                      <span className="label">Designation: </span>
-                      <span className="other_content">{USER.designation}</span>
-                    </div>
-                  )
-                }
-                {
-                  USER.city && USER.country && (
-                    <div className="other_stuff">
-                      <span className="label">Location: </span>
-                      <span className="other_content">{USER.city}, {USER.country} </span>
-                    </div>
-                  )
-                }
+                {USER.designation && (
+                  <div className="other_stuff">
+                    <span className="label">Designation: </span>
+                    <span className="other_content">{USER.designation}</span>
+                  </div>
+                )}
+                {USER.city && USER.country && (
+                  <div className="other_stuff">
+                    <span className="label">Location: </span>
+                    <span className="other_content">
+                      {USER.city}, {USER.country}{" "}
+                    </span>
+                  </div>
+                )}
 
-                {
-                  USER.organization && (                    
+                {USER.organization && (
                   <div className="other_stuff">
                     <span className="label">Organization: </span>
                     <span className="other_content">{USER.organization} </span>
                   </div>
-                  )
-                }
+                )}
 
                 <div className="other_stuff">
                   <span className="other_content">
@@ -107,8 +100,8 @@ const Profile = (props) => {
             </div>
           </div>
         </div>
-          <ProfileUpcoming />
-          <ProfilePast />
+        <ProfileUpcoming />
+        <ProfilePast />
       </div>
     </SidebarLayout>
   );
