@@ -21,11 +21,11 @@ const App = () => {
             <Route exact path="/" component={LandingPage}></Route>
             <Route
               exact
-              path="/:userId/dashboard"
+              path="/dashboard"
               component={CommunityDashboard}
             ></Route>
-            <Route exact path="/:userId/wemeets" component={WeMeets}></Route>
-            <Route exact path="/:userId/profile" component={Profile}></Route>
+            <Route exact path="/wemeets" component={WeMeets}></Route>
+            <Route exact path="/profile" component={Profile}></Route>
             <Route
               exact
               path="/wemeets/:wemeetId/summary"

@@ -4,6 +4,7 @@ import CreateWeMeetForm from "../Hardik/CreateWeMeetForm/CreateWeMeetForm";
 import SignOut from "../Hardik/SignOut/SignOut";
 import {Link} from 'react-router-dom'
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import PersonIcon from "@material-ui/icons/Person";
 
 import { auth } from "../../firebase/firebase.utils";
 
@@ -11,17 +12,6 @@ import "./DropdownMain.css";
 
 const DropdownMain = () => { 
   const [hidden, toggleHidden] = useState(false);
-  const [userId, setUserId] = useState('');
-
-  const getUserId = () =>{
-    const id = auth.currentUser.uid;
-    setUserId(id);
-    console.log(userId);
-  }
-
-  useEffect(() => {
-    getUserId();
-  }, [])
 
   return (
     <div className="shift">
@@ -37,8 +27,11 @@ const DropdownMain = () => {
         </div>
         {hidden ? (
           <div className="dropdown-content">
-            <Link to={`/${userId}/dashboard`} style={{marginBottom: "10px", marginTop: "10px"}}>
+            <Link to={`/dashboard`} style={{marginBottom: "10px", marginTop: "10px"}}>
               <DashboardIcon /> Dashbord
+            </Link>
+            <Link to={`/profile`} style={{marginBottom: "10px", marginBottom: "12px"}}>
+              <PersonIcon /> Profile
             </Link>
             <SignOut />
           </div>

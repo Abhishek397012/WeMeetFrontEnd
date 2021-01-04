@@ -2,57 +2,44 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 import WeMeetsCard from "./WeMeetsDetails";
-class MonthlyWemeets extends Component {
-  static propTypes = {
-    month: PropTypes.string.isRequired,
-  };
-  render() {
-    return (
-      <Fragment>
-        <div className="row">
-          <div className="container">
-            <h6 className="WeMeet_Month">{this.props.month}</h6>
-            <div className="vl">
-              <div className="row">
+import moment from "moment";
+import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
+
+const MonthlyWemeets = (props) => {
+  const { user } = isAuthenticated();
+
+  return (
+    <Fragment>
+      <div className="row">
+        <div className="container">
+          <h6 className="WeMeet_Month">{props.month}</h6>
+          <div className="vl">
+            <div className="row">
+              {props.wemeets.map((event) => (
                 <WeMeetsCard
-                  createdon="Sat 20 Dec 2020"
-                  status="Upcoming"
-                  host="191210037 Community"
-                  title="Backend Discussion"
-                  meetingtime="12:00 PM - 1:00 PM IST"
-                  id="12345"
+                  createdon={moment(event.createdAt).fromNow().toUpperCase()}
+                  status={
+                    event.status == 0
+                      ? "Upcoming"
+                      : event.status == 1
+                      ? "Live"
+                      : event.status == 2
+                      ? "Completed"
+                      : ""
+                  }
+                  host={user.name}
+                  title={event.title}
+                  meetingtime={event.startDateTime}
+                  id={event._id}
+                  registrationcount={event.registrants.length}
                 />
-                <WeMeetsCard
-                  createdon="Sat 20 Dec 2020"
-                  status="Upcoming"
-                  host="191210037 Community"
-                  title="Dashboard Creation"
-                  meetingtime="12:00 PM - 1:00 PM IST"
-                  id="12345"
-                />
-                <WeMeetsCard
-                  createdon="Sat 19 Dec 2020"
-                  status="Completed"
-                  host="191210037 Community"
-                  title="We Meet Discussion"
-                  meetingtime="12:00 PM - 1:00 PM IST"
-                  id="12345"
-                />
-                <WeMeetsCard
-                  createdon="Sat 19 Dec 2020"
-                  status="Completed"
-                  host="191210037 Community"
-                  title="We Meet Introduction"
-                  meetingtime="12:00 PM - 1:00 PM IST"
-                  id="12345"
-                />
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      </Fragment>
-    );
-  }
-}
+      </div>
+    </Fragment>
+  );
+};
 
 export default MonthlyWemeets;

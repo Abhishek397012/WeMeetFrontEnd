@@ -1,8 +1,6 @@
-const Circle = ({letter}) => {
+const Circle = ({url}) => {
     return (
-        <div className="letter_wrapper">
-            {letter}
-        </div>
+            <img src={url} alt="Profile Img" className="letter_wrapper"/>
     )
 }
 
