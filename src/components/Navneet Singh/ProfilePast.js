@@ -38,7 +38,7 @@ const ProfilePast = () =>{
                                 past.map(event=>(
                                         <WeMeetsCard
                                             createdon={moment(event.createdAt).fromNow().toUpperCase()}
-                                            status="Upcoming"
+                                            status="Completed"
                                             host={user.name}
                                             title={event.title}
                                             meetingtime="12:00 PM - 1:00 PM IST"

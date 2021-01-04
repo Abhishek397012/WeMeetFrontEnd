@@ -31,9 +31,9 @@ const LogIn = () => {
       let name = user.displayName;
       let fid = user.uid;
       let profilePicUrl = user.photoURL
+      let email = user.email
 
-
-      login({name, fid, profilePicUrl, designation: "", organization: "", city: "", aboutMe: "", eventsHosted: [], country: ""})
+      login({name, fid, profilePicUrl, designation: "", organization: "", city: "", aboutMe: "", eventsHosted: [], country: "", email})
         .then(data=>{
           authenticate(
               data, 
