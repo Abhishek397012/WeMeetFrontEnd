@@ -48,13 +48,12 @@ const CreateWeMeetForm = ({ history }) => {
       .then((data) => {
         console.log(data);
         alert("WeMeet Created Successfully!!");
+        setFormVisibility(false);
+        history.push("/dashboard");
       })
       .catch((err) => {
         console.log(err);
       });
-
-    setFormVisibility(false);
-    history.push("/dashboard");
   };
 
   const handleLounge = (event) => {
