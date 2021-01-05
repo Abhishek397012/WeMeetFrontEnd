@@ -29,7 +29,36 @@ const MonthlyWemeets = (props) => {
                   }
                   host={user.name}
                   title={event.title}
-                  meetingtime={event.startDateTime}
+                  meetingstarttimehours={new Date(
+                    new Date(event.startDateTime).toISOString()
+                  ).getHours()}
+                  meetingstarttimemins={
+                    new Date(new Date(event.startDateTime).toISOString())
+                      .getMinutes()
+                      .toString().length == 1
+                      ? "0" +
+                        new Date(
+                          new Date(event.startDateTime).toISOString()
+                        ).getMinutes()
+                      : new Date(
+                          new Date(event.startDateTime).toISOString()
+                        ).getMinutes()
+                  }
+                  meetingendtimehours={new Date(
+                    new Date(event.endDateTime).toISOString()
+                  ).getHours()}
+                  meetingendtimemins={
+                    new Date(new Date(event.endDateTime).toISOString())
+                      .getMinutes()
+                      .toString().length == 1
+                      ? "0" +
+                        new Date(
+                          new Date(event.endDateTime).toISOString()
+                        ).getMinutes()
+                      : new Date(
+                          new Date(event.endDateTime).toISOString()
+                        ).getMinutes()
+                  }
                   id={event._id}
                   registrationcount={event.registrants.length}
                 />

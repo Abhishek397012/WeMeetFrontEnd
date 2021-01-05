@@ -14,8 +14,6 @@ const CommunityDashboard = (props) => {
   const [AllWeMeetsDetails, setAllWeMeetsDetails] = useState({});
   const [error, SetError] = useState(false);
   const [found, setFound] = useState(false);
-  const [shown1, setShown1] = useState(false);
-  const [shown2, setShown2] = useState(false);
   const loadAllWemeetsDetails = () => {
     // Get the information from the database
     getAllWeMeetDetails(user._id)

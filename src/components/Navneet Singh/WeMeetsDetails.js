@@ -31,7 +31,8 @@ const WeMeetsCard = (props) => {
             {props.title}
           </h4>
           <h5 className="AllMonthlyWeMeetsContent AllMonthlyWeMeetsTime">
-            {props.meetingtime}
+            {props.meetingstarttimehours}:{props.meetingstarttimemins} -{" "}
+            {props.meetingendtimehours}:{props.meetingendtimemins} IST
           </h5>
         </div>
       </div>
