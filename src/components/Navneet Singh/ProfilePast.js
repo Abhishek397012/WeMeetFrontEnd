@@ -1,7 +1,7 @@
 import WeMeetsCard from "./WeMeetsDetails";
 import "./styles.css";
 import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
-import { getUpcoming, getPast } from "./apiDash";
+import { getPast } from "./apiDash";
 import React, { useEffect, useState, Fragment } from "react";
 import moment from "moment";
 
@@ -33,7 +33,7 @@ const ProfilePast = () => {
             {past.map((event) => (
               <WeMeetsCard
                 createdon={moment(event.createdAt).fromNow().toUpperCase()}
-                status="Upcoming"
+                status="Completed"
                 host={user.name}
                 title={event.title}
                 meetingtime="12:00 PM - 1:00 PM IST"

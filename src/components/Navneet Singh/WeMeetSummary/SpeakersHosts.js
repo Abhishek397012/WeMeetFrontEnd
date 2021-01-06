@@ -5,7 +5,7 @@ import SpeakerCard from "./SpeakersCard";
 import { getAllSpeakers } from "./apiDash";
 import { isAuthenticated } from "../../Hardik/LogIn/apiLogin";
 
-const SpeakersHosts = () => {
+const SpeakersHosts = (props) => {
   const { user } = isAuthenticated();
 
   const [AllSpeakers, setAllSpeakers] = useState({});
@@ -34,7 +34,7 @@ const SpeakersHosts = () => {
   }, []);
 
   return (
-    <SummarySidebar id="12345">
+    <SummarySidebar id={props.match.params.wemeetId}>
       <div className="dashboard_wrapper">
         <h1 className="WeMeet_Dashboard_heading WeMeet_Main_Dashboard_heading ">
           Speakers & Hosts

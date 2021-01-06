@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import { auth } from "../../../firebase/firebase.utils";
-
+import { signout } from "../LogIn/apiLogin";
 import Button from "@material-ui/core/Button";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
@@ -12,8 +12,14 @@ const SignOut = ({ history }) => {
       variant="contained"
       color="primary"
       onClick={() => {
-        auth.signOut();
-        history.push("/");
+        signout()
+          .then((data) => {
+            auth.signOut();
+            history.push("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }}
     >
       <ExitToAppIcon style={{ marginRight: "10px" }} />

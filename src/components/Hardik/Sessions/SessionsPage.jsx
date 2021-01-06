@@ -15,7 +15,7 @@ const theme = createMuiTheme({
   },
 });
 
-const SessionsPage = () => {
+const SessionsPage = (props) => {
   const classes = useStyles();
   const s = new Date();
   const defaultValues = {
@@ -27,7 +27,7 @@ const SessionsPage = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <SummarySidebar id="12345">
+      <SummarySidebar id={props.match.params.wemeetId}>
         <div className={classes.root}>
           <h1 className={classes.header}>
             Sessions

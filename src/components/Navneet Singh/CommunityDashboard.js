@@ -20,7 +20,6 @@ const CommunityDashboard = (props) => {
     getLatestUpcoming(user._id)
       .then((data) => {
         setUpcomingEvent(data.UpcomingWemeet);
-        console.log(upcomingEvent);
         if (upcomingEvent) {
           setFound(true);
         } else {

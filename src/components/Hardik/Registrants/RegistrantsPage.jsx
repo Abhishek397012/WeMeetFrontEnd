@@ -8,6 +8,8 @@ import SearchBox from "./SearchBox";
 import RegistrantsList from "./RegistrantsList";
 
 import { useStyles } from "./styles";
+import { getRegistrants } from "./apiRegistrants";
+import { isAuthenticated } from "../../Hardik/LogIn/apiLogin";
 
 const theme = createMuiTheme({
   palette: {
@@ -15,16 +17,20 @@ const theme = createMuiTheme({
   },
 });
 
-const RegistrantsPage = () => {
+const RegistrantsPage = (props) => {
   const classes = useStyles();
   const [registrants, setRegistrants] = useState([]);
   const [searchfield, setSearchfield] = useState("");
 
+  const { user } = isAuthenticated();
+
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((users) => {
-        setRegistrants(users);
+    getRegistrants(user._id, props.match.params.wemeetId)
+      .then((data) => {
+        setRegistrants(data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
@@ -38,7 +44,7 @@ const RegistrantsPage = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <SummarySidebar id="12345">
+      <SummarySidebar id={props.match.params.wemeetId}>
         <div className={classes.root}>
           <h1 className={classes.header}>Registrants</h1>
           <div className={classes.page}>

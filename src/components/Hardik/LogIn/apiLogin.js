@@ -16,6 +16,18 @@ export const login = (user) => {
       console.log(err);
     });
 };
+export const signout = () => {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("jwt");
+    return fetch(`${API}/auth/signout`, {
+      method: "GET",
+    })
+      .then((response) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+};
 
 export const authenticate = (data, next) => {
   if (typeof window != undefined) {

@@ -32,6 +32,7 @@ const LogIn = () => {
       let name = user.displayName;
       let fid = user.uid;
       let profilePicUrl = user.photoURL;
+      let email = user.email;
 
       login({
         name,
@@ -43,6 +44,7 @@ const LogIn = () => {
         aboutMe: "",
         eventsHosted: [],
         country: "",
+        email,
       })
         .then((data) => {
           authenticate(data, () => {

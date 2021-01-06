@@ -26,7 +26,7 @@ const CreateWeMeetForm = ({ history }) => {
   const [lounge, loungeStatus] = useState(false);
   const [meetVisibility, setMeetVisibility] = useState(false);
   const [formValues, setFormValues] = useState({
-    hostId: user._id,
+    hostId: undefined,
     title: "",
     description: "",
     startDateTime: "",
@@ -39,6 +39,12 @@ const CreateWeMeetForm = ({ history }) => {
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
+    if (user) {
+      setFormValues({
+        ...formValues,
+        hostId: user._id,
+      });
+    }
   };
 
   const handleSubmit = (event) => {
