@@ -24,6 +24,7 @@ const Profile = (props) => {
     };
     update(id, token, User)
       .then((data) => {
+        console.log("Updated:", data);
         getUser();
       })
       .catch((err) => {
@@ -82,6 +83,22 @@ const Profile = (props) => {
                     </span>
                   </div>
                 )}
+                {USER.city && !USER.country && (
+                  <div className="other_stuff">
+                    <span className="label">City: </span>
+                    <span className="other_content">
+                      {USER.city}
+                    </span>
+                  </div>
+                )}
+                {USER.country && !USER.city && (
+                  <div className="other_stuff">
+                    <span className="label">Country: </span>
+                    <span className="other_content">
+                      {USER.country}
+                    </span>
+                  </div>
+                )}
 
                 {USER.organization && (
                   <div className="other_stuff">
@@ -90,13 +107,24 @@ const Profile = (props) => {
                   </div>
                 )}
 
+
+                
                 <div className="other_stuff">
                   <span className="other_content">
                     {" "}
                     <Container triggerText="Edit Profile" onSubmit={onSubmit} />
                   </span>
                 </div>
+
               </div>
+              <div style={{marginLeft:"4em"}}>
+                  {USER.aboutMe && (
+                    <div className="other_stuff">
+                      <span className="label">About Me: </span>
+                      <span className="other_content">{USER.aboutMe} </span>
+                    </div>
+                  )}
+                </div>
             </div>
           </div>
         </div>
