@@ -15,7 +15,6 @@ toast.configure();
 
 
 
-
 const LandingPage = () => {
 
   const [USER, setUser] = useState({});

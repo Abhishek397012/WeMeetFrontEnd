@@ -8,6 +8,10 @@ import { auth } from "../../firebase/firebase.utils";
 import { getUserDetails, update } from "./apiDash";
 import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
 
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure();
+
 const Profile = (props) => {
   const { token, user } = isAuthenticated();
 
@@ -24,7 +28,7 @@ const Profile = (props) => {
     };
     update(id, token, User)
       .then((data) => {
-        console.log("Updated:", data);
+        toast.success("Profile Updated Successfully", { position: toast.POSITION.TOP_CENTER })
         getUser();
       })
       .catch((err) => {
