@@ -60,7 +60,7 @@ const CommunityDashboard = (props) => {
         <h6 className="WeMeet_Dashboard_heading">
           View and manage all your WeMeets, past and future.
         </h6>
-        {/* <div className="row">
+        <div className="row">
           <Card value={AllWeMeetsDetails.TeamWeMeets} title="Team WeMeets" />
           <Card value={AllWeMeetsDetails.TotalSpeakers} title="Total Speaker" />
           <Card
@@ -71,7 +71,7 @@ const CommunityDashboard = (props) => {
             value={AllWeMeetsDetails.TotalAttendee}
             title="Total Attendee"
           />
-        </div> */}
+        </div>
         <h5 className="WeMeet_Dashboard_heading WeMeet_Main_Dashboard_heading ">
           ALL WeMeets
         </h5>
