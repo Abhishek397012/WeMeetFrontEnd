@@ -31,17 +31,25 @@ const LogIn = () => {
     if (user) {
       let name = user.displayName;
       let fid = user.uid;
-      let profilePicUrl = user.photoURL
-      let email = user.email
+      let profilePicUrl = user.photoURL;
+      let email = user.email;
 
-      login({name, fid, profilePicUrl, designation: "", organization: "", city: "", aboutMe: "", eventsHosted: [], country: "", email})
-        .then(data=>{
-          authenticate(
-              data, 
-              ()=>{
-                  console.log(data);
-              }
-          )
+      login({
+        name,
+        fid,
+        profilePicUrl,
+        designation: "",
+        organization: "",
+        city: "",
+        aboutMe: "",
+        eventsHosted: [],
+        country: "",
+        email,
+      })
+        .then((data) => {
+          authenticate(data, () => {
+            console.log(data);
+          });
         })
         .catch((err) => {
           console.log(err);

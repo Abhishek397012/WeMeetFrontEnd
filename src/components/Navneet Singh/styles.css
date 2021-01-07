@@ -146,7 +146,7 @@ li {
     Upcoming Event Display
   */
 
-.upcoming_label{
+.upcoming_label {
   color: rgb(175, 170, 194);
   font-size: 20px;
 }
@@ -171,8 +171,8 @@ li {
     padding: 24px;
   }
 }
-.upcoming_content_{
-  color:rgb(108, 86, 247);
+.upcoming_content_ {
+  color: rgb(108, 86, 247);
   font-size: 1.3em;
 }
 
@@ -210,8 +210,6 @@ li {
   display: flex;
   justify-content: space-between;
 } */
-
-
 
 .urdh_button {
   align-self: center;
@@ -474,61 +472,59 @@ li {
   border-radius: 12%;
 }
 
-.top_part_summary{
+.top_part_summary {
   flex-direction: column;
   display: flex;
 }
 
-.bottom_part_summary{
-  border-top:rgb(135, 133, 143)
+.bottom_part_summary {
+  border-top: rgb(135, 133, 143);
 }
 
-.btn_back_summary{
+.btn_back_summary {
   margin-left: 25px;
   margin-top: 5px;
   margin-bottom: 30px;
   margin-right: 55px;
 }
 
-.btn_back_summary button:focus{
+.btn_back_summary button:focus {
   outline: 0;
 }
-.btn_back_summary button{
-  background-color:rgb(135, 133, 143);
+.btn_back_summary button {
+  background-color: rgb(135, 133, 143);
   color: white;
   border-radius: 10px;
   transition: all 0.3s ease 0s;
-
 }
-.btn_back_summary button:hover{
+.btn_back_summary button:hover {
   background-color: rgb(94, 90, 114);
   transition: all 0.3s ease 0s;
-
 }
 
-.event_name_summary{
-  color:rgb(245, 245, 248);
+.event_name_summary {
+  color: rgb(245, 245, 248);
   margin-left: 25px;
   font-weight: 600;
   margin-bottom: 25px;
   font-size: 1.3em;
 }
 
-.event_date_summary{
-  color:rgb(32, 101, 204);
+.event_date_summary {
+  color: rgb(32, 101, 204);
   margin-left: 25px;
   font-weight: 700;
   font-size: 1em;
 }
 
-.btn_sw_summ{
+.btn_sw_summ {
   margin-left: 25px;
   margin-top: 20px;
   margin-bottom: 25px;
   margin-right: 50px;
 }
 
-.btn_sw_summ button{
+.btn_sw_summ button {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 20px;
@@ -538,15 +534,13 @@ li {
   border-radius: 10px;
   background-color: rgba(255, 251, 0, 0.89);
   transition: all 0.3s ease 0s;
-
 }
 
-.btn_sw_summ button:hover{
+.btn_sw_summ button:hover {
   background-color: rgba(228, 255, 72, 0.938);
   transition: all 0.3s ease 0s;
-
 }
-  
-.btn_sw_summ button:focus{
+
+.btn_sw_summ button:focus {
   outline: 0;
 }

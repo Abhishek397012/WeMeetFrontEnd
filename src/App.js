@@ -28,7 +28,7 @@ const App = () => {
             exact
             path="/wemeets/:wemeetId/summary"
             component={BasicInfo}
-          ></Route>
+          />
           <Route
             exact
             path="/wemeets/:wemeetId/sessions"

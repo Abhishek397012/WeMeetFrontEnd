@@ -8,8 +8,8 @@ import { auth } from "../../firebase/firebase.utils";
 import { getUserDetails, update } from "./apiDash";
 import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
 
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
 const Profile = (props) => {
@@ -28,7 +28,9 @@ const Profile = (props) => {
     };
     update(id, token, User)
       .then((data) => {
-        toast.success("Profile Updated Successfully", { position: toast.POSITION.TOP_CENTER })
+        toast.success("Profile Updated Successfully", {
+          position: toast.POSITION.TOP_CENTER,
+        });
         getUser();
       })
       .catch((err) => {
@@ -90,17 +92,13 @@ const Profile = (props) => {
                 {USER.city && !USER.country && (
                   <div className="other_stuff">
                     <span className="label">City: </span>
-                    <span className="other_content">
-                      {USER.city}
-                    </span>
+                    <span className="other_content">{USER.city}</span>
                   </div>
                 )}
                 {USER.country && !USER.city && (
                   <div className="other_stuff">
                     <span className="label">Country: </span>
-                    <span className="other_content">
-                      {USER.country}
-                    </span>
+                    <span className="other_content">{USER.country}</span>
                   </div>
                 )}
 
@@ -111,24 +109,20 @@ const Profile = (props) => {
                   </div>
                 )}
 
-
-                
                 <div className="other_stuff">
                   <span className="other_content">
-                    {" "}
                     <Container triggerText="Edit Profile" onSubmit={onSubmit} />
                   </span>
                 </div>
-
               </div>
-              <div style={{marginLeft:"4em"}}>
-                  {USER.aboutMe && (
-                    <div className="other_stuff">
-                      <span className="label">About Me: </span>
-                      <span className="other_content">{USER.aboutMe} </span>
-                    </div>
-                  )}
-                </div>
+              <div style={{ marginLeft: "4em" }}>
+                {USER.aboutMe && (
+                  <div className="other_stuff">
+                    <span className="label">About Me: </span>
+                    <span className="other_content">{USER.aboutMe} </span>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

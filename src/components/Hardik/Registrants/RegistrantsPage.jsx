@@ -8,8 +8,8 @@ import SearchBox from "./SearchBox";
 import RegistrantsList from "./RegistrantsList";
 
 import { useStyles } from "./styles";
-import {getRegistrants} from './apiRegistrants'
-import {isAuthenticated}from '../../Hardik/LogIn/apiLogin' 
+import { getRegistrants } from "./apiRegistrants";
+import { isAuthenticated } from "../../Hardik/LogIn/apiLogin";
 
 const theme = createMuiTheme({
   palette: {
@@ -22,16 +22,16 @@ const RegistrantsPage = (props) => {
   const [registrants, setRegistrants] = useState([]);
   const [searchfield, setSearchfield] = useState("");
 
-  const {user} = isAuthenticated();
+  const { user } = isAuthenticated();
 
   useEffect(() => {
     getRegistrants(user._id, props.match.params.wemeetId)
-    .then(data=>{
-      setRegistrants(data)
-    })
-    .catch(err=>{
-      console.log(err);
-    })
+      .then((data) => {
+        setRegistrants(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const onSearchChange = (event) => {

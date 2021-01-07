@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Dashboard from "./CommunityDashboard";
+import WeMeets from "./WeMeets";
+import { auth } from "../../firebase/firebase.utils";
 import { getUserDetails } from "./apiDash";
 import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
 
@@ -31,7 +34,7 @@ const Sidebar = ({ children }) => {
 
   useEffect(() => {
     getUser();
-  });
+  }, []);
 
   return (
     <div className="dash_container">

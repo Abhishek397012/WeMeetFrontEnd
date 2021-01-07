@@ -43,10 +43,11 @@ const CreateWeMeetForm = ({ history }) => {
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
-    if(user){
+    if (user) {
       setFormValues({
-        ...formValues, hostId: user._id
-      })
+        ...formValues,
+        hostId: user._id,
+      });
     }
   };
 
@@ -56,14 +57,15 @@ const CreateWeMeetForm = ({ history }) => {
     createWeMeet(user._id, formValues)
       .then((data) => {
         console.log(data);
-        toast.success("WeMeet Created Successfully!!", { position: toast.POSITION.TOP_CENTER })
+        toast.success("WeMeet Created Successfully!!", {
+          position: toast.POSITION.TOP_CENTER
+        })
+        setFormVisibility(false);
+        history.push("/dashboard");
       })
       .catch((err) => {
         console.log(err);
       });
-
-    setFormVisibility(false);
-    history.push("/dashboard");
   };
 
   const handleLounge = (event) => {

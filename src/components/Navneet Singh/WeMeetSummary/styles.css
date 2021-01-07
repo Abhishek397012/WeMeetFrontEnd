@@ -1,0 +1,32 @@
+.SpeakerCard {
+  background-color: rgb(68, 65, 65);
+  padding: 1.2rem;
+  border-radius: 1rem;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+.AllSpeakers {
+  margin-top: 2rem;
+}
+.speakerimg {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rem;
+}
+.speakerName {
+  font-size: 1.35rem;
+  color: rgb(189, 227, 245);
+  margin-top: 1rem;
+  font-weight: bolder;
+}
+.speakerDesignation {
+  font-size: 0.85rem;
+  color: rgb(226, 228, 229);
+  margin-top: 1rem;
+}
+.removespeaker {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  font-size: 1.5rem;
+}

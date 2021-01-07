@@ -47,7 +47,7 @@ const DropdownMain = ({ history }) => {
               variant="contained"
               style={{ marginBottom: "5px" }}
             >
-              <DashboardIcon style={{ marginRight: "10px" }} /> Dashbord
+              <DashboardIcon style={{ marginRight: "10px" }} /> Dashboard
             </Button>
             <SignOut />
           </div>
