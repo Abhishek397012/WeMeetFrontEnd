@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Dashboard from "./CommunityDashboard";
-import WeMeets from "./WeMeets";
-import { auth } from "../../firebase/firebase.utils";
 import { getUserDetails } from "./apiDash";
 import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
 
@@ -21,7 +18,7 @@ const Sidebar = ({ children }) => {
     eventsHosted: [],
   });
 
-  const getUser = () => {
+  useEffect(() => {
     const id = user.fid;
     getUserDetails(id)
       .then((data) => {
@@ -30,10 +27,6 @@ const Sidebar = ({ children }) => {
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  useEffect(() => {
-    getUser();
   }, []);
 
   return (

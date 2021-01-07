@@ -16,6 +16,7 @@ export const login = (user) => {
       console.log(err);
     });
 };
+
 export const signout = () => {
   if (typeof window !== "undefined") {
     localStorage.removeItem("jwt");
