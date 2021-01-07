@@ -13,12 +13,14 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
 const LandingPage = () => {
-  const [USER, setUser] = useState({});
+  // const [USER, setUser] = useState({});
 
-  useEffect(() => {
-    const { user } = isAuthenticated();
-    setUser(user);
-  }, []);
+  const { user } = isAuthenticated();
+
+  // useEffect(() => {
+    
+  //   setUser(user);
+  // }, []);
 
   const notify = () => {
     toast.error("Please Login To Host Your Event", {
@@ -30,7 +32,7 @@ const LandingPage = () => {
     <>
       <img src={backgroundImg} alt="Snow" className="size" />
 
-      {USER ? (
+      {user ? (
         <Link className="btn1 btn btn-primary" to="/dashboard">
           <AddCircleIcon /> <span className="small1">Host a Free Event</span>
         </Link>
