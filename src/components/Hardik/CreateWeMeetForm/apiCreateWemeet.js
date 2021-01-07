@@ -1,5 +1,6 @@
 import { API } from "../../../config";
 export const createWeMeet = (id, wemeet) => {
+  console.log("Wemeet Create: ", wemeet);
   return fetch(`${API}/wemeets/${id}/create`, {
     method: "POST",
     headers: {

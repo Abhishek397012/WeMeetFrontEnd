@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-
+import {getUserDetails} from '../../Navneet Singh/apiDash'
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Close from "@material-ui/icons/Close";
@@ -43,17 +43,18 @@ const CreateWeMeetForm = ({ history }) => {
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
-    if (user) {
-      setFormValues({
-        ...formValues,
-        hostId: user._id,
-      });
-    }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
 
+  const handleSubmit = (event) => {
+    if(user){
+      setFormValues({
+        ...formValues, 
+        hostId: user._id
+      })
+    }
+    event.preventDefault();
+    console.log(formValues);
     createWeMeet(user._id, formValues)
       .then((data) => {
         console.log(data);
