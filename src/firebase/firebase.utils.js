@@ -1,5 +1,4 @@
 import firebase from "firebase/app";
-import React, {useEffect} from 'react';
 import "firebase/firestore";
 import "firebase/auth";
 
@@ -20,10 +19,7 @@ export const firestore = firebase.firestore();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => {
-  
-  auth.signInWithPopup(googleProvider)
-}
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 const fbProvider = new firebase.auth.FacebookAuthProvider();
 fbProvider.setCustomParameters({ prompt: "select_account" });
