@@ -32,7 +32,7 @@ const RegistrantsPage = (props) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [user._id, props.match.params.wemeetId]);
 
   const onSearchChange = (event) => {
     setSearchfield(event.target.value);
