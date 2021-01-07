@@ -9,8 +9,12 @@ import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
 import { isAuthenticated } from "../LogIn/apiLogin";
 import { createWeMeet } from "./apiCreateWemeet";
-
 import { useStyles } from "./CreateWeMeetForm.styles";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure();
+
+
 
 const theme = createMuiTheme({
   palette: {
@@ -52,7 +56,7 @@ const CreateWeMeetForm = ({ history }) => {
     createWeMeet(user._id, formValues)
       .then((data) => {
         console.log(data);
-        alert("WeMeet Created Successfully!!");
+        toast.success("WeMeet Created Successfully!!", { position: toast.POSITION.TOP_CENTER })
       })
       .catch((err) => {
         console.log(err);
