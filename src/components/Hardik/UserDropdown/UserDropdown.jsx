@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 
 import LogIn from "../LogIn/LogIn";
 import DropdownMain from "../../Nitish/DropdownMain";
@@ -9,8 +9,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 const UserDropdown = () => {
   const [user] = useAuthState(auth);
-
-
 
   return (
     <>
