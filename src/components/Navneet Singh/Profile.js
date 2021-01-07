@@ -111,7 +111,6 @@ const Profile = (props) => {
 
                 <div className="other_stuff">
                   <span className="other_content">
-                    {" "}
                     <Container triggerText="Edit Profile" onSubmit={onSubmit} />
                   </span>
                 </div>

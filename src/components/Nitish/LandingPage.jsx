@@ -29,15 +29,13 @@ const LandingPage = () => {
   return (
     <>
       <img src={backgroundImg} alt="Snow" className="size" />
-      {!USER && (
-        <div>
-          <Link className="btn1 btn btn-primary" to="/" onClick={notify}>
-            <AddCircleIcon /> <span className="small1">Host a Free Event</span>
-          </Link>
-        </div>
-      )}
-      {USER && (
+
+      {USER ? (
         <Link className="btn1 btn btn-primary" to="/dashboard">
+          <AddCircleIcon /> <span className="small1">Host a Free Event</span>
+        </Link>
+      ) : (
+        <Link className="btn1 btn btn-primary" to="/" onClick={notify}>
           <AddCircleIcon /> <span className="small1">Host a Free Event</span>
         </Link>
       )}
@@ -49,5 +47,4 @@ const LandingPage = () => {
     </>
   );
 };
-
 export default LandingPage;
