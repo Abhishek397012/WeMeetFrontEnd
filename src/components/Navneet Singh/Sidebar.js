@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { getUserDetails } from "./apiDash";
 import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
 
 const Sidebar = ({ children }) => {
@@ -22,17 +21,17 @@ const Sidebar = ({ children }) => {
           <ul className="no_style">
             <li>
               <Link className="sidebar_links" to={`/dashboard`}>
-                <i class="fas fa-th-large"></i> Dashboard
+                <i className="fas fa-th-large"></i> Dashboard
               </Link>
             </li>
             <li>
               <Link className="sidebar_links" to={`/wemeets`}>
-                <i class="fas fa-video"></i> WeMeets
+                <i className="fas fa-video"></i> WeMeets
               </Link>
             </li>
             <li>
               <Link className="sidebar_links" to={`/profile`}>
-                <i class="fa fa-user"></i> Profile
+                <i className="fa fa-user"></i> Profile
               </Link>
             </li>
           </ul>
