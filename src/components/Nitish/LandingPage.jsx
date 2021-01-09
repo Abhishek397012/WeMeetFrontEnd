@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
@@ -13,14 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
 const LandingPage = () => {
-  // const [USER, setUser] = useState({});
-
   const { user } = isAuthenticated();
-
-  // useEffect(() => {
-    
-  //   setUser(user);
-  // }, []);
 
   const notify = () => {
     toast.error("Please Login To Host Your Event", {
@@ -41,7 +34,6 @@ const LandingPage = () => {
           <AddCircleIcon /> <span className="small1">Host a Free Event</span>
         </Link>
       )}
-
       <a className="btn2 btn btn-dark" href="#root" role="button">
         <PlayCircleFilledIcon />
         <span className="small1">Take a Video Tour</span>
