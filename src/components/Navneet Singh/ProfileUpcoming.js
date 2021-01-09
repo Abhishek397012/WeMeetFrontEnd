@@ -34,10 +34,47 @@ const ProfileUpcoming = () => {
             {upcoming.map((event) => (
               <WeMeetsCard
                 createdon={moment(event.createdAt).fromNow().toUpperCase()}
-                status="Upcoming"
+                status={
+                  event.status === 0
+                    ? "Upcoming"
+                    : event.status === 1
+                    ? "Live"
+                    : event.status === 2
+                    ? "Completed"
+                    : ""
+                }
+                meetingstarttimehours={new Date(
+                  new Date(event.startDateTime).toISOString()
+                ).getHours()}
+                meetingstarttimemins={
+                  new Date(new Date(event.startDateTime).toISOString())
+                    .getMinutes()
+                    .toString().length === 1
+                    ? "0" +
+                      new Date(
+                        new Date(event.startDateTime).toISOString()
+                      ).getMinutes()
+                    : new Date(
+                        new Date(event.startDateTime).toISOString()
+                      ).getMinutes()
+                }
+                meetingendtimehours={new Date(
+                  new Date(event.endDateTime).toISOString()
+                ).getHours()}
+                meetingendtimemins={
+                  new Date(new Date(event.endDateTime).toISOString())
+                    .getMinutes()
+                    .toString().length === 1
+                    ? "0" +
+                      new Date(
+                        new Date(event.endDateTime).toISOString()
+                      ).getMinutes()
+                    : new Date(
+                        new Date(event.endDateTime).toISOString()
+                      ).getMinutes()
+                }
                 host={user.name}
                 title={event.title}
-                meetingtime="12:00 PM - 1:00 PM IST"
                 id={event._id}
                 registrationcount={event.registrants.length}
               />
