@@ -6,8 +6,6 @@ import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
 const Sidebar = ({ children }) => {
   const { user } = isAuthenticated();
 
-
-
   return (
     <div className="dash_container">
       <div className="sidebar">
