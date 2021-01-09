@@ -6,28 +6,7 @@ import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
 const Sidebar = ({ children }) => {
   const { user } = isAuthenticated();
 
-  const [USER, setUser] = useState({
-    name: "",
-    profilePicUrl: "",
-    id: "",
-    designation: "",
-    organization: "",
-    city: "",
-    aboutMe: "",
-    country: "",
-    eventsHosted: [],
-  });
 
-  useEffect(() => {
-    const id = user.fid;
-    getUserDetails(id)
-      .then((data) => {
-        setUser(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   return (
     <div className="dash_container">
@@ -35,10 +14,10 @@ const Sidebar = ({ children }) => {
         <div className="top-part-sidebar">
           <img
             className="name_img"
-            src={USER.profilePicUrl}
+            src={user.profilePicUrl}
             alt="Profile Img"
           />
-          <p className="header_Name">{USER.name}</p>
+          <p className="header_Name">{user.name}</p>
           <p className="header_Description">You are an Admin</p>
         </div>
         <nav className="clearfix s-navbar">
