@@ -4,7 +4,6 @@ import Circle from "./Circle";
 import ProfileUpcoming from "./ProfileUpcoming";
 import ProfilePast from "./ProfilePast";
 import Container from "./Container";
-import { auth } from "../../firebase/firebase.utils";
 import { getUserDetails, update } from "./apiDash";
 import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
 
@@ -109,9 +108,10 @@ const Profile = (props) => {
                   </div>
                 )}
 
-                {!USER.city && !USER.country && !USER.designation && !USER.organization && (
-                  <div></div>
-                )}
+                {!USER.city &&
+                  !USER.country &&
+                  !USER.designation &&
+                  !USER.organization && <div></div>}
 
                 <div className="other_stuff">
                   <span className="other_content">

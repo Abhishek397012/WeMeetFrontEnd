@@ -33,8 +33,9 @@ const createUserProfile = (user) => {
     email,
   })
     .then((data) => {
-      console.log("authenticate", data);
+      console.log("logged in", data);
       authenticate(data);
+      window.history.go(0);
     })
     .catch((err) => {
       console.log(err);
