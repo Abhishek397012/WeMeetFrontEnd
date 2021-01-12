@@ -19,11 +19,11 @@ const MonthlyWemeets = (props) => {
                 <WeMeetsCard
                   createdon={moment(event.createdAt).fromNow().toUpperCase()}
                   status={
-                    event.status == 0
+                    event.status === 0
                       ? "Upcoming"
-                      : event.status == 1
+                      : event.status === 1
                       ? "Live"
-                      : event.status == 2
+                      : event.status === 2
                       ? "Completed"
                       : ""
                   }
@@ -35,7 +35,7 @@ const MonthlyWemeets = (props) => {
                   meetingstarttimemins={
                     new Date(new Date(event.startDateTime).toISOString())
                       .getMinutes()
-                      .toString().length == 1
+                      .toString().length === 1
                       ? "0" +
                         new Date(
                           new Date(event.startDateTime).toISOString()
@@ -50,7 +50,7 @@ const MonthlyWemeets = (props) => {
                   meetingendtimemins={
                     new Date(new Date(event.endDateTime).toISOString())
                       .getMinutes()
-                      .toString().length == 1
+                      .toString().length === 1
                       ? "0" +
                         new Date(
                           new Date(event.endDateTime).toISOString()

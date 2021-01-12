@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-
+import { withRouter } from "react-router-dom";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Close from "@material-ui/icons/Close";
 import TextField from "@material-ui/core/TextField";
 import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
-import {isAuthenticated} from '../LogIn/apiLogin'
-import {createWeMeet} from './apiCreateWemeet'
-
+import { isAuthenticated } from "../LogIn/apiLogin";
+import { createWeMeet } from "./apiCreateWemeet";
 import { useStyles } from "./CreateWeMeetForm.styles";
-
-import { auth } from "../../../firebase/firebase.utils";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 const theme = createMuiTheme({
   palette: {
@@ -19,44 +19,50 @@ const theme = createMuiTheme({
   },
 });
 
-const CreateWeMeetForm = () => {
-
-  const {user} = isAuthenticated();
+const CreateWeMeetForm = ({ history }) => {
+  const { user } = isAuthenticated();
 
   const classes = useStyles();
   const [formVisibility, setFormVisibility] = useState(false);
   const [lounge, loungeStatus] = useState(false);
   const [meetVisibility, setMeetVisibility] = useState(false);
   const [formValues, setFormValues] = useState({
-    hostId: user._id,
+    hostId: undefined,
     title: "",
     description: "",
     startDateTime: "",
     endDateTime: "",
     visibility: "Private",
     loungeTables: "0",
-    registrationCount: 0, 
-    status: 0
+    registrationCount: 0,
+    status: 0,
   });
-
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
+    if (user) {
+      setFormValues({
+        ...formValues,
+        hostId: user._id,
+      });
+    }
     event.preventDefault();
-    
+    console.log(formValues);
     createWeMeet(user._id, formValues)
-      .then(data=>{
+      .then((data) => {
         console.log(data);
-        alert("WeMeet Created Successfully!!")
+        toast.success("WeMeet Created Successfully!!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        setFormVisibility(false);
+        history.push("/dashboard");
       })
-      .catch(err=>{
+      .catch((err) => {
         console.log(err);
-      })
-
-    setFormVisibility(false);
+      });
   };
 
   const handleLounge = (event) => {
@@ -189,4 +195,4 @@ const CreateWeMeetForm = () => {
   );
 };
 
-export default CreateWeMeetForm;
+export default withRouter(CreateWeMeetForm);

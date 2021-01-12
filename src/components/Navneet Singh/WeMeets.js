@@ -20,6 +20,7 @@ const CommunityDashboard = (props) => {
       .then((data) => {
         setAllWeMeetsDetails(data);
         if (AllWeMeetsDetails) {
+          console.log("test", AllWeMeetsDetails);
           setFound(true);
         }
       })

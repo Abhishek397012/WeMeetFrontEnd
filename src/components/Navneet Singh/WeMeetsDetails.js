@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
 import Default from "./images/default.jpg";
@@ -12,7 +11,7 @@ const WeMeetsCard = (props) => {
     <div className="col-sm-10 col-md-10 col-lg-5 AllMonthlyWeMeets">
       <div className="row">
         <div className="col-sm-10 col-md-4 col-lg-4">
-          <img className="img" src={Default} alt="default image" />
+          <img className="img" src={Default} alt="wemeet poster" />
         </div>
         <div className="col-sm-10 col-md-8 col-lg-8">
           <div className="row WeMeetHeaderCard">
