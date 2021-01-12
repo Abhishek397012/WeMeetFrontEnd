@@ -31,10 +31,14 @@ const SessionsPage = (props) => {
         <div className={classes.root}>
           <h1 className={classes.header}>
             Sessions
-            <NewSessionForm type={1} data={defaultValues} />
+            <NewSessionForm
+              type={1}
+              data={defaultValues}
+              wemeetId={props.match.params.wemeetId}
+            />
           </h1>
           <div className={classes.page}>
-            <SessionsList />
+            <SessionsList wemeetId={props.match.params.wemeetId} />
           </div>
         </div>
       </SummarySidebar>

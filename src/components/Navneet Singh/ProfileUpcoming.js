@@ -2,7 +2,7 @@ import WeMeetsCard from "./WeMeetsDetails";
 import "./styles.css";
 import React, { useEffect, useState, Fragment } from "react";
 import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
-import { getUpcoming, getPast } from "./apiDash";
+import { getUpcoming } from "./apiDash";
 import moment from "moment";
 
 const ProfileUpcoming = () => {
@@ -33,6 +33,7 @@ const ProfileUpcoming = () => {
           <div className="upcoming_profile_content">
             {upcoming.map((event) => (
               <WeMeetsCard
+                key={event._id}
                 createdon={moment(event.createdAt).fromNow().toUpperCase()}
                 status={
                   event.status === 0

@@ -20,7 +20,10 @@ const RegistrantsList = ({ registrants }) => {
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell align="right">Email</TableCell>
-            <TableCell align="right">Speaker</TableCell>
+            <TableCell align="right">organization</TableCell>
+            <TableCell align="right">Designation</TableCell>
+            <TableCell align="right">Location</TableCell>
+            <TableCell align="right">Speaker Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -31,6 +34,11 @@ const RegistrantsList = ({ registrants }) => {
                   {registrant.name}
                 </TableCell>
                 <TableCell align="right">{registrant.email}</TableCell>
+                <TableCell align="right">{registrant.organization}</TableCell>
+                <TableCell align="right">{registrant.designation}</TableCell>
+                <TableCell align="right">
+                  {registrant.city}/{registrant.country}
+                </TableCell>
                 <TableCell align="right">Speaker/Registrant</TableCell>
               </TableRow>
             );

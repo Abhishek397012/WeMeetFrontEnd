@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import SessionCard from "./SessionCard";
+import { getAllSessions } from "../NewSessionForm/apiSessions";
+import { isAuthenticated } from "../LogIn/apiLogin";
 
 import { useStyles } from "./styles";
 
-const SessionsList = () => {
+const SessionsList = (props) => {
   const classes = useStyles();
+  const { user } = isAuthenticated();
   const s = new Date();
   const data = [
     {
@@ -19,10 +22,20 @@ const SessionsList = () => {
     },
   ];
 
+  useEffect(() => {
+    getAllSessions(user._id, props.wemeetId)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(console.log);
+  }, [props.wemeetId, user._id]);
+
   return (
     <div className={classes.cardlist}>
       {data.map((info) => {
-        return <SessionCard key={info.id} data={info} />;
+        return (
+          <SessionCard key={info.id} data={info} wemeetId={props.wemeetId} />
+        );
       })}
     </div>
   );

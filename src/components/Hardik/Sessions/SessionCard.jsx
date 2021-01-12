@@ -11,7 +11,7 @@ import { useStyles } from "./styles";
 
 export default function SimpleCard({ data }) {
   const classes = useStyles();
-  const { title, summary, date, time, duration } = data;
+  const { title, summary, date, time, duration, wemeetId } = data;
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
@@ -43,7 +43,7 @@ export default function SimpleCard({ data }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <NewSessionForm type={0} data={data} />
+        <NewSessionForm type={0} data={data} wemeetId={wemeetId} />
       </CardActions>
     </Card>
   );
