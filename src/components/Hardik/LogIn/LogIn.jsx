@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import SignInGoogle from "../SignInGoogle/SignInGoogle";
 import SignInFb from "../SignInFb/SignInFb";
@@ -14,8 +14,6 @@ import { styles } from "./LogIn.styles";
 import { auth } from "../../../firebase/firebase.utils";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import { login, authenticate } from "./apiLogin";
-
 const useStyles = makeStyles((theme) => styles);
 
 const LogIn = () => {
@@ -26,36 +24,6 @@ const LogIn = () => {
   const userStuff = () => {
     setVisibility(false);
   };
-
-  useEffect(() => {
-    if (user) {
-      let name = user.displayName;
-      let fid = user.uid;
-      let profilePicUrl = user.photoURL;
-      let email = user.email;
-
-      login({
-        name,
-        fid,
-        profilePicUrl,
-        designation: "",
-        organization: "",
-        city: "",
-        aboutMe: "",
-        eventsHosted: [],
-        country: "",
-        email,
-      })
-        .then((data) => {
-          authenticate(data, () => {
-            console.log(data);
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [user]);
 
   return (
     <div>

@@ -10,7 +10,8 @@ import Close from "@material-ui/icons/Close";
 
 import { useStyles } from "./NewSessionForm.styles";
 
-import { auth } from "../../../firebase/firebase.utils";
+import { createSession } from "./apiSessions";
+import { isAuthenticated } from "../LogIn/apiLogin";
 
 const theme = createMuiTheme({
   palette: {
@@ -20,28 +21,40 @@ const theme = createMuiTheme({
 
 // set type = 1 for create form and 0 for edit form
 // must sent default values for data prop
-const NewSessionForm = ({ type, data }) => {
+const NewSessionForm = (props) => {
   const classes = useStyles();
+
+  const { user } = isAuthenticated();
+  const { type, data, wemeetId } = props;
   const { title, summary, datetime, duration } = data;
   const [formVisibility, setFormVisibility] = useState(false);
   const [formValues, setFormValues] = useState({
-    hostId: "",
-    title: "",
+    hostId: undefined,
+    wemeetId: undefined,
+    name: "",
     description: "",
-    startDateTime: "",
+    sessionDateTime: "",
     duration: "0",
   });
 
   const handleChange = (event) => {
-    setFormValues({ ...formValues, [event.target.name]: event.target.value });
+    setFormValues({
+      ...formValues,
+      [event.target.name]: event.target.value,
+      hostId: user._id,
+      wemeetId: wemeetId,
+    });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setFormValues({ ...formValues, hostId: auth.currentUser.uid });
-    console.log(datetime);
-    alert("form submitted");
-    setFormVisibility(false);
+    createSession(formValues)
+      .then((data) => {
+        console.log("data", data);
+        alert("Session created");
+        setFormVisibility(false);
+      })
+      .catch(console.log);
   };
 
   return (
@@ -86,7 +99,7 @@ const NewSessionForm = ({ type, data }) => {
               <div>
                 <TextField
                   required
-                  name="title"
+                  name="name"
                   onChange={handleChange}
                   className={classes.textfield}
                   id="outlined-basic"
@@ -108,7 +121,7 @@ const NewSessionForm = ({ type, data }) => {
                 />
                 <TextField
                   required
-                  name="startDateTime"
+                  name="sessionDateTime"
                   onChange={handleChange}
                   className={classes.datetime}
                   label="Start date and time"

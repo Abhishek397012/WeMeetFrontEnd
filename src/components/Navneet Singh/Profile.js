@@ -4,7 +4,6 @@ import Circle from "./Circle";
 import ProfileUpcoming from "./ProfileUpcoming";
 import ProfilePast from "./ProfilePast";
 import Container from "./Container";
-import { auth } from "../../firebase/firebase.utils";
 import { getUserDetails, update } from "./apiDash";
 import { isAuthenticated } from "../Hardik/LogIn/apiLogin";
 
@@ -71,9 +70,9 @@ const Profile = (props) => {
         <div className="user_details">
           <div className="profile_header">Details</div>
           <div className="detail_content_profile">
-            <Circle url={USER.profilePicUrl} />
+            <Circle url={user.profilePicUrl} />
             <div className="profile_rem_content">
-              <div className="profile_name">{USER.name}</div>
+              <div className="profile_name">{user.name}</div>
               <div className="profile_other">
                 {USER.designation && (
                   <div className="other_stuff">
@@ -108,6 +107,11 @@ const Profile = (props) => {
                     <span className="other_content">{USER.organization} </span>
                   </div>
                 )}
+
+                {!USER.city &&
+                  !USER.country &&
+                  !USER.designation &&
+                  !USER.organization && <div></div>}
 
                 <div className="other_stuff">
                   <span className="other_content">

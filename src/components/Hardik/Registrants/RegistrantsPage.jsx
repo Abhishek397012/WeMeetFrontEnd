@@ -9,7 +9,7 @@ import RegistrantsList from "./RegistrantsList";
 
 import { useStyles } from "./styles";
 import { getRegistrants } from "./apiRegistrants";
-import { isAuthenticated } from "../../Hardik/LogIn/apiLogin";
+import { isAuthenticated } from "../LogIn/apiLogin";
 
 const theme = createMuiTheme({
   palette: {
@@ -29,10 +29,8 @@ const RegistrantsPage = (props) => {
       .then((data) => {
         setRegistrants(data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+      .catch(console.log);
+  }, [user._id, props.match.params.wemeetId]);
 
   const onSearchChange = (event) => {
     setSearchfield(event.target.value);

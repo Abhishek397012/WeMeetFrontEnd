@@ -8,16 +8,16 @@ const UpcomingDisplay = ({ setDefault, wemeet }) => {
   const showDefault = () => (
     <div
       className="upcoming_content"
-      style={{ textAlign: "center", fontSize: "30px", paddingTop: "50px" }}
+      style={{ textAlign: "center", fontSize: "30px", paddingTop: "80px" }}
     >
-      Default Event
+      No Upcoming Wemeets !!
     </div>
   );
 
   return (
     <Fragment>
-      {setDefault && <div className="upcoming_wrapper">{showDefault()}</div>}
-      {setDefault === false && (
+      {!wemeet && <div className="upcoming_wrapper">{showDefault()}</div>}
+      {wemeet && (
         <div className="upcoming_wrapper">
           <div className="row" style={{ width: "100%", margin: "0.5em" }}>
             <div className="col-3 upcoming_left">

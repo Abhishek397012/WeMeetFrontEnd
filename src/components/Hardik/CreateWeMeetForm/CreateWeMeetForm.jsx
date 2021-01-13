@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Close from "@material-ui/icons/Close";
@@ -9,8 +8,10 @@ import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
 import { isAuthenticated } from "../LogIn/apiLogin";
 import { createWeMeet } from "./apiCreateWemeet";
-
 import { useStyles } from "./CreateWeMeetForm.styles";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 const theme = createMuiTheme({
   palette: {
@@ -39,21 +40,23 @@ const CreateWeMeetForm = ({ history }) => {
 
   const handleChange = (event) => {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = (event) => {
     if (user) {
       setFormValues({
         ...formValues,
         hostId: user._id,
       });
     }
-  };
-
-  const handleSubmit = (event) => {
     event.preventDefault();
-
+    console.log(formValues);
     createWeMeet(user._id, formValues)
       .then((data) => {
         console.log(data);
-        alert("WeMeet Created Successfully!!");
+        toast.success("WeMeet Created Successfully!!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
         setFormVisibility(false);
         history.push("/dashboard");
       })
