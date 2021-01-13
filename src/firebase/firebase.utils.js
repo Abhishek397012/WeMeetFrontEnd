@@ -1,5 +1,4 @@
 import firebase from "firebase/app";
-import "firebase/firestore";
 import "firebase/auth";
 
 import { login, authenticate } from "../components/Hardik/LogIn/apiLogin";
@@ -13,6 +12,8 @@ const config = {
   appId: "1:384434381677:web:a1c491e9e68e4e88f03064",
   measurementId: "G-PP8M2FW8MK",
 };
+
+firebase.initializeApp(config);
 
 const createUserProfile = (user) => {
   const name = user.displayName;
@@ -42,10 +43,7 @@ const createUserProfile = (user) => {
     });
 };
 
-firebase.initializeApp(config);
-
 export const auth = firebase.auth();
-export const firestore = firebase.firestore();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: "select_account" });
