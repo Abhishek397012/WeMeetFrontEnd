@@ -5,14 +5,14 @@ class Sidesticker extends Component {
   render() {
     return (
       <>
-        <div>
-          <a href="#">
-            <figure>
+        <div className="html-small body-small">
+          <a href="#" className="a-small">
+            <figure className="figure-small">
               <div className="date">
                 <span className="card-date-day">9</span>
                 <span className="card-date-month">JAN</span>
               </div>
-              <figcaption>
+              <figcaption className="figcaption">
                 <h4>
                   <span>DEEPAK</span>
                 </h4>
