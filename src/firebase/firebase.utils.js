@@ -38,9 +38,7 @@ const createUserProfile = (user) => {
       authenticate(data);
       window.history.go(0);
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch(console.log);
 };
 
 export const auth = firebase.auth();
