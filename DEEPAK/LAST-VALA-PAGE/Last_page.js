@@ -10,10 +10,10 @@ class Last_page extends Component {
   render() {
     return (
       <>
-        <div class="container-fluid  special-margin">
+        <div class="container-fluid special-margin ">
           <div class="row">
-            <div class="col-9">
-              <div class="row">
+            <div class="col-6">
+              <div class="row ml-5">
                 <div class="col">
                   <img
                     src="/images/Capture.PNG"
@@ -23,7 +23,7 @@ class Last_page extends Component {
                 </div>
               </div>
 
-              <div class="row whiteColor">
+              <div class="row whiteColor ml-5">
                 <div class="col">
                   <h3 className="headingColor">ABOUT THIS EVENT</h3>
                   <br />
@@ -32,7 +32,7 @@ class Last_page extends Component {
                 </div>
               </div>
 
-              <div class="row whiteColor">
+              <div class="row whiteColor ml-5">
                 <div class="col">
                   <h3 className="headingColor">SCHEDULE</h3>
                   <br />
@@ -47,7 +47,7 @@ class Last_page extends Component {
                   <hr />
                 </div>
               </div>
-              <div class="row whiteColor">
+              <div class="row whiteColor ml-5 ">
                 <div class="col">
                   <br />
                   <h3 className="headingColor">HOST</h3>
@@ -55,7 +55,7 @@ class Last_page extends Component {
                 </div>
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-6">
               <Sidesticker />
             </div>
           </div>
