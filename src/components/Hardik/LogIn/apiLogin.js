@@ -30,9 +30,10 @@ export const signout = () => {
   }
 };
 
-export const authenticate = (data) => {
+export const authenticate = (data, next) => {
   if (typeof window != undefined) {
     localStorage.setItem("jwt", JSON.stringify(data));
+    next();
   }
 };
 

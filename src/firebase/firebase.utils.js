@@ -13,8 +13,6 @@ const config = {
   measurementId: "G-PP8M2FW8MK",
 };
 
-firebase.initializeApp(config);
-
 const createUserProfile = (user) => {
   const name = user.displayName;
   const fid = user.uid;
@@ -38,8 +36,14 @@ const createUserProfile = (user) => {
       authenticate(data);
       window.history.go(0);
     })
-    .catch(console.log);
+    .catch((err) => {
+      console.log(err);
+    });
 };
+
+firebase.initializeApp(config);
+
+
 
 export const auth = firebase.auth();
 
