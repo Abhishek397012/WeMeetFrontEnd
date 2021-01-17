@@ -46,7 +46,7 @@ const RegistrantsList = ({ registrants }) => {
                 </TableCell>
                 <TableCell align="right">
                   <Switch
-                    checked={registrant.isSpeaker}
+                    defaultChecked={registrant.isSpeaker}
                     color="primary"
                     onChange={(e) => handleChange(e, registrant.email)}
                     inputProps={{ "aria-label": "primary checkbox" }}
