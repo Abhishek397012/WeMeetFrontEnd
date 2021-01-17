@@ -17,7 +17,7 @@ class Sidesticker extends Component {
                   <span>DEEPAK</span>
                 </h4>
                 <p>
-                  <span>Small_talk</span>
+                  <span>{this.props.wemeet.title}</span>
                 </p>
                 <h2> START TIME</h2>
                 <h2> 12:00 PM</h2>

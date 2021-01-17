@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import SessionCard from "./SessionCard";
 import { getAllSessions } from "../NewSessionForm/apiSessions";
@@ -9,33 +9,27 @@ import { useStyles } from "./styles";
 const SessionsList = (props) => {
   const classes = useStyles();
   const { user } = isAuthenticated();
-  const s = new Date();
-  var data = [
-    {
-      id: "123",
-      title: "Welcome Session",
-      summary: "This is an introduction session. Now, plan ahead.",
-      datetime: s.toJSON().substr(0, 16),
-      date: s.toDateString(),
-      time: s.toTimeString(),
-      duration: 30,
-    },
-  ];
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     getAllSessions(user._id, props.wemeetId)
-      .then((dataSession) => {
-        data=[...dataSession];
-        console.log(data);
+      .then((items) => {
+        console.log(items);
+        setData(items);
       })
       .catch(console.log);
   }, [props.wemeetId, user._id]);
 
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <div className={classes.cardlist}>
+      {console.log(data.size)}
       {data.map((info) => {
         return (
-          <SessionCard key={info.id} data={info} wemeetId={props.wemeetId} />
+          <SessionCard key={info._id} data={info} wemeetId={props.wemeetId} />
         );
       })}
     </div>

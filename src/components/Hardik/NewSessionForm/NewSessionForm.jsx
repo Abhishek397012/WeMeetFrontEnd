@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -9,7 +10,7 @@ import Close from "@material-ui/icons/Close";
 
 import { useStyles } from "./NewSessionForm.styles";
 
-import { createSession } from "./apiSessions";
+import { createSession, updateSession } from "./apiSessions";
 import { isAuthenticated } from "../LogIn/apiLogin";
 
 
@@ -29,39 +30,49 @@ const NewSessionForm = (props) => {
   const classes = useStyles();
 
   const { user } = isAuthenticated();
-  const { type, data, wemeetId } = props;
-  const { title, summary, datetime, duration } = data;
+  const { type, data, wemeetId, history } = props;
+  const { name, description, sessionDateTime, duration } = data;
   const [formVisibility, setFormVisibility] = useState(false);
-  const s = new Date();
+  const s = new Date(sessionDateTime);
   const [formValues, setFormValues] = useState({
-    hostId: undefined,
-    wemeetId: undefined,
-    name: "",
-    description: "",
+    hostId: user._id,
+    wemeetId: wemeetId,
+    name: name,
+    description: description,
     sessionDateTime: s.toJSON().substr(0, 16),
-    duration: "0",
+    duration: duration,
   });
 
   const handleChange = (event) => {
     setFormValues({
       ...formValues,
       [event.target.name]: event.target.value,
-      hostId: user._id,
-      wemeetId: wemeetId,
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createSession(formValues)
-      .then((data) => {
-        console.log("data", data);
-        toast.success("Session Created",  {
-          position: toast.POSITION.TOP_CENTER,
+    if (Number(type)) {
+      createSession(formValues)
+        .then((data) => {
+          toast.success("Session Created", {
+            position: toast.POSITION.TOP_CENTER,
+          })
+          history.go(0);
+          setFormVisibility(false);
         })
-        setFormVisibility(false);
-      })
-      .catch(console.log);
+        .catch(console.log);
+    } else {
+      updateSession(formValues, data._id)
+        .then((data) => {
+          toast.success("Session Updated", {
+            position: toast.POSITION.TOP_CENTER,
+          })
+          history.go(0);
+          setFormVisibility(false);
+        })
+        .catch(console.log);
+    }
   };
 
   return (
@@ -112,7 +123,7 @@ const NewSessionForm = (props) => {
                   id="outlined-basic"
                   label="Session Title"
                   placeholder="Please add a clear name for session."
-                  defaultValue={title}
+                  defaultValue={name}
                   variant="outlined"
                 />
                 <TextField
@@ -123,7 +134,7 @@ const NewSessionForm = (props) => {
                   id="outlined-basic"
                   label="Session Summary"
                   placeholder="Add a descriptive summary."
-                  defaultValue={summary}
+                  defaultValue={description}
                   variant="outlined"
                 />
                 <TextField
@@ -133,7 +144,7 @@ const NewSessionForm = (props) => {
                   className={classes.datetime}
                   label="Start date and time"
                   type="datetime-local"
-                  defaultValue={datetime}
+                  defaultValue={s.toJSON().substr(0, 16)}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -165,4 +176,4 @@ const NewSessionForm = (props) => {
   );
 };
 
-export default NewSessionForm;
+export default withRouter(NewSessionForm);

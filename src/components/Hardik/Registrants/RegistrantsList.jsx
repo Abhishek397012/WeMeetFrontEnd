@@ -34,7 +34,7 @@ const RegistrantsList = ({ registrants }) => {
         <TableBody>
           {registrants.map((registrant, i) => {
             return (
-              <TableRow key={i}>
+              <TableRow key={registrant.email}>
                 <TableCell component="th" scope="row">
                   {registrant.name}
                 </TableCell>
@@ -46,6 +46,7 @@ const RegistrantsList = ({ registrants }) => {
                 </TableCell>
                 <TableCell align="right">
                   <Switch
+                    defaultChecked={registrant.isSpeaker}
                     color="primary"
                     onChange={(e) => handleChange(e, registrant.email)}
                     inputProps={{ "aria-label": "primary checkbox" }}
