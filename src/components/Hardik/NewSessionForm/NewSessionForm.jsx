@@ -27,7 +27,7 @@ const NewSessionForm = (props) => {
   const { type, data, wemeetId } = props;
   const { name, description, sessionDateTime, duration } = data;
   const [formVisibility, setFormVisibility] = useState(false);
-  const s = new Date();
+  const s = new Date(sessionDateTime);
   const [formValues, setFormValues] = useState({
     hostId: undefined,
     wemeetId: undefined,
@@ -126,7 +126,7 @@ const NewSessionForm = (props) => {
                   className={classes.datetime}
                   label="Start date and time"
                   type="datetime-local"
-                  defaultValue={sessionDateTime}
+                  defaultValue={s.toJSON().substr(0, 16)}
                   InputLabelProps={{
                     shrink: true,
                   }}
