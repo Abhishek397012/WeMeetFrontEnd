@@ -16,13 +16,14 @@ export default function SimpleCard({ data }) {
 
   return (
     <Card className={classes.card} variant="outlined">
+      {JSON.stringify(data)}
       <CardContent>
         <Typography
           className={classes.title}
           color="textSecondary"
           gutterBottom
         >
-          {title}
+          {data.title}
         </Typography>
         <Typography variant="body2" component="p">
           {bull}
