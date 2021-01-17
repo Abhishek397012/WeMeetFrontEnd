@@ -12,6 +12,11 @@ import { useStyles } from "./NewSessionForm.styles";
 import { createSession } from "./apiSessions";
 import { isAuthenticated } from "../LogIn/apiLogin";
 
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
+
 const theme = createMuiTheme({
   palette: {
     type: "dark",
@@ -51,7 +56,9 @@ const NewSessionForm = (props) => {
     createSession(formValues)
       .then((data) => {
         console.log("data", data);
-        alert("Session created");
+        toast.success("Session Created",  {
+          position: toast.POSITION.TOP_CENTER,
+        })
         setFormVisibility(false);
       })
       .catch(console.log);

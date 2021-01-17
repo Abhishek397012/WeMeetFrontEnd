@@ -9,6 +9,7 @@ import SessionsList from "./SessionsList";
 
 import { useStyles } from "./styles";
 
+
 const theme = createMuiTheme({
   palette: {
     type: "dark",
