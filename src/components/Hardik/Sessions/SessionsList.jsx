@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import SessionCard from "./SessionCard";
 import { getAllSessions } from "../NewSessionForm/apiSessions";
@@ -9,26 +9,29 @@ import { useStyles } from "./styles";
 const SessionsList = (props) => {
   const classes = useStyles();
   const { user } = isAuthenticated();
-  const s = new Date();
   const [data, setData] = useState([]);
 
   useEffect(() => {
     getAllSessions(user._id, props.wemeetId)
-      .then((dataSession) => {
-        setData(dataSession);
-        console.log(data);
+      .then((items) => {
+        console.log(items);
+        setData(items);
       })
       .catch(console.log);
   }, [props.wemeetId, user._id]);
 
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <div className={classes.cardlist}>
-      {     
-      data.map(info=>(
-                  <SessionCard key={info._id} data={info} wemeetId={props.wemeetId} />
-
-            ))
-     }
+      {console.log(data.size)}
+      {data.map((info) => {
+        return (
+          <SessionCard key={info._id} data={info} wemeetId={props.wemeetId} />
+        );
+      })}
     </div>
   );
 };

@@ -17,6 +17,23 @@ export const createSession = (formValues) => {
     .catch(console.log);
 };
 
+export const updateSession = (formValues, sessionId) => {
+  const { hostId, wemeetId } = formValues;
+
+  return fetch(`${API}/wemeets/${hostId}/${wemeetId}/${sessionId}/update`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formValues),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch(console.log);
+};
+
 export const getAllSessions = (hostId, wemeetId) => {
   return fetch(`${API}/wemeets/${hostId}/${wemeetId}/allsessions`, {
     method: "GET",

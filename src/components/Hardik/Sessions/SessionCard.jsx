@@ -11,7 +11,8 @@ import { useStyles } from "./styles";
 
 export default function SimpleCard({ data }) {
   const classes = useStyles();
-  const { title, summary, date, time, duration, wemeetId } = data;
+  const { name, description, sessionDateTime, duration, wemeetId } = data;
+  const datetime = new Date(sessionDateTime);
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
@@ -23,14 +24,14 @@ export default function SimpleCard({ data }) {
           color="textSecondary"
           gutterBottom
         >
-          {data.title}
+          {name}
         </Typography>
         <Typography variant="body2" component="p">
           {bull}
-          {date}
+          {datetime.toLocaleDateString()}
           <br />
           {bull}
-          {time}
+          {datetime.toLocaleTimeString()}
           <br />
           {bull}
           {duration} mins
@@ -40,7 +41,7 @@ export default function SimpleCard({ data }) {
           component="p"
           style={{ maxHeight: "80px", overflowY: "auto", marginTop: "20px" }}
         >
-          {summary}
+          {description}
         </Typography>
       </CardContent>
       <CardActions>

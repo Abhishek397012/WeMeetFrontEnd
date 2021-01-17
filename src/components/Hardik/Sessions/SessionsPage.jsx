@@ -20,9 +20,9 @@ const SessionsPage = (props) => {
   const classes = useStyles();
   const s = new Date();
   const defaultValues = {
-    title: "",
-    summary: "",
-    datetime: s.toJSON().substr(0, 16),
+    name: "",
+    description: "",
+    sessionDateTime: s.toJSON().substr(0, 16),
     duration: 0,
   };
 
