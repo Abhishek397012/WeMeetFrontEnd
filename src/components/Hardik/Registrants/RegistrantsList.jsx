@@ -34,7 +34,7 @@ const RegistrantsList = ({ registrants }) => {
         <TableBody>
           {registrants.map((registrant, i) => {
             return (
-              <TableRow key={i}>
+              <TableRow key={registrant.email}>
                 <TableCell component="th" scope="row">
                   {registrant.name}
                 </TableCell>
