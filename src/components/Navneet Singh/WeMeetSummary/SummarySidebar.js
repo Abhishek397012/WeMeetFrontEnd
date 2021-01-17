@@ -14,12 +14,11 @@ const SummarySidebar = (props) => {
   useEffect(() => {
     getWeMeet(user._id, props.id)
       .then((data) => {
-        console.log(data);
         setWemeet({
           ...wemeet,
-          status: data.status,
-          title: data.title,
-          startDateTime: data.startDateTime,
+          status: data.wemeet.status,
+          title: data.wemeet.title,
+          startDateTime: data.wemeet.startDateTime,
         });
         console.log(wemeet);
       })
@@ -39,6 +38,7 @@ const SummarySidebar = (props) => {
           </Link>
           <p className="event_name_summary">{wemeet.title}</p>
           <p className="event_date_summary">
+            {console.log(new Date(wemeet.startDateTime).toDateString())}
             {new Date(wemeet.startDateTime).toDateString()}
           </p>
 

@@ -5,7 +5,6 @@ import { ThemeProvider } from "@material-ui/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
-
 import Close from "@material-ui/icons/Close";
 
 import { useStyles } from "./NewSessionForm.styles";
@@ -28,12 +27,13 @@ const NewSessionForm = (props) => {
   const { type, data, wemeetId } = props;
   const { title, summary, datetime, duration } = data;
   const [formVisibility, setFormVisibility] = useState(false);
+  const s = new Date();
   const [formValues, setFormValues] = useState({
     hostId: undefined,
     wemeetId: undefined,
     name: "",
     description: "",
-    sessionDateTime: "",
+    sessionDateTime: s.toJSON().substr(0, 16),
     duration: "0",
   });
 

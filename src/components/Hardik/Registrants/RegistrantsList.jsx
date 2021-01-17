@@ -7,11 +7,16 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Switch from "@material-ui/core/Switch";
 
 import { useStyles } from "./styles";
 
 const RegistrantsList = ({ registrants }) => {
   const classes = useStyles();
+
+  const handleChange = (event, email) => {
+    console.log(email, event.target.checked);
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -20,7 +25,7 @@ const RegistrantsList = ({ registrants }) => {
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell align="right">Email</TableCell>
-            <TableCell align="right">organization</TableCell>
+            <TableCell align="right">Organization</TableCell>
             <TableCell align="right">Designation</TableCell>
             <TableCell align="right">Location</TableCell>
             <TableCell align="right">Speaker Status</TableCell>
@@ -39,7 +44,13 @@ const RegistrantsList = ({ registrants }) => {
                 <TableCell align="right">
                   {registrant.city}/{registrant.country}
                 </TableCell>
-                <TableCell align="right">Speaker/Registrant</TableCell>
+                <TableCell align="right">
+                  <Switch
+                    color="primary"
+                    onChange={(e) => handleChange(e, registrant.email)}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                </TableCell>
               </TableRow>
             );
           })}
