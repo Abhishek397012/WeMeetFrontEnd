@@ -42,14 +42,11 @@ class Sidevala extends Component {
                                     <h5>
                                         <span>
                                             <AssignmentIndIcon />
-                                        </span>
-                    Meetup
-                  </h5>
+                                        </span> Meetup </h5>
                                 </div>
                             </div>
                             <h4>WeMeet Name</h4><br />
                             <p>Description</p>
-
                             <div className="row">
                                 <div className="col">
                                     <h5>Timing</h5>
@@ -57,17 +54,14 @@ class Sidevala extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-3">
-                                   
                                     <textarea ref={(textarea) => (this.textArea = textarea)} />
                                 </div>
-
                                 <div className="col-2">
                                     <button
                                         onClick={() => this.copyCodeToClipboard()}
                                         className="button1">
                                         copy Link
                                        </button>
-
                                 </div>
                                 <div className="col-4">
                                     <a className="button2">View Event Page</a>
@@ -85,7 +79,7 @@ class Sidevala extends Component {
                         <div className="col-5">
                             <h3>
                                 Airmeet Description
-                <span>
+                                   <span>
                                     <EditIcon />
                                 </span>
                             </h3>
