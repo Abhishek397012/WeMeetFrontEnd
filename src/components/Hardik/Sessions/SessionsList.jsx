@@ -10,7 +10,7 @@ const SessionsList = (props) => {
   const classes = useStyles();
   const { user } = isAuthenticated();
   const s = new Date();
-  const data = [
+  var data = [
     {
       id: "123",
       title: "Welcome Session",
@@ -24,7 +24,8 @@ const SessionsList = (props) => {
 
   useEffect(() => {
     getAllSessions(user._id, props.wemeetId)
-      .then((data) => {
+      .then((dataSession) => {
+        data=[...dataSession];
         console.log(data);
       })
       .catch(console.log);
