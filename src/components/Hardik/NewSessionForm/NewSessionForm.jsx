@@ -55,7 +55,9 @@ const NewSessionForm = (props) => {
     if (Number(type)) {
       createSession(formValues)
         .then((data) => {
-          alert("Session created");
+          toast.success("Session Created", {
+            position: toast.POSITION.TOP_CENTER,
+          })
           history.go(0);
           setFormVisibility(false);
         })
@@ -63,7 +65,9 @@ const NewSessionForm = (props) => {
     } else {
       updateSession(formValues, data._id)
         .then((data) => {
-          alert("Session updated");
+          toast.success("Session Updated", {
+            position: toast.POSITION.TOP_CENTER,
+          })
           history.go(0);
           setFormVisibility(false);
         })

@@ -17,7 +17,6 @@ export default function SimpleCard({ data }) {
 
   return (
     <Card className={classes.card} variant="outlined">
-      {JSON.stringify(data)}
       <CardContent>
         <Typography
           className={classes.title}
