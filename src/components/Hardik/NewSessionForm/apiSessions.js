@@ -17,13 +17,16 @@ export const createSession = (formValues) => {
     .catch(console.log);
 };
 
-export const getAllSessions = (hostId, wemeetId) => {
-  return fetch(`${API}/wemeets/${hostId}/${wemeetId}/allsessions`, {
-    method: "GET",
+export const updateSession = (formValues, sessionId) => {
+  const { hostId, wemeetId } = formValues;
+
+  return fetch(`${API}/wemeets/${hostId}/${wemeetId}/${sessionId}/update`, {
+    method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+    body: JSON.stringify(formValues),
   })
     .then((response) => {
       return response.json();
@@ -31,8 +34,8 @@ export const getAllSessions = (hostId, wemeetId) => {
     .catch(console.log);
 };
 
-export const getSessionDetails = (hostId, wemeetId, sessionId) => {
-  return fetch(`${API}/wemeets/${hostId}/${wemeetId}/${sessionId}/summary`, {
+export const getAllSessions = (hostId, wemeetId) => {
+  return fetch(`${API}/wemeets/${hostId}/${wemeetId}/allsessions`, {
     method: "GET",
     headers: {
       Accept: "application/json",

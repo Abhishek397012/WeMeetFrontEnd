@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -9,7 +10,7 @@ import Close from "@material-ui/icons/Close";
 
 import { useStyles } from "./NewSessionForm.styles";
 
-import { createSession } from "./apiSessions";
+import { createSession, updateSession } from "./apiSessions";
 import { isAuthenticated } from "../LogIn/apiLogin";
 
 const theme = createMuiTheme({
@@ -24,37 +25,45 @@ const NewSessionForm = (props) => {
   const classes = useStyles();
 
   const { user } = isAuthenticated();
-  const { type, data, wemeetId } = props;
+  const { type, data, wemeetId, history } = props;
   const { name, description, sessionDateTime, duration } = data;
   const [formVisibility, setFormVisibility] = useState(false);
   const s = new Date(sessionDateTime);
   const [formValues, setFormValues] = useState({
-    hostId: undefined,
-    wemeetId: undefined,
-    name: "",
-    description: "",
+    hostId: user._id,
+    wemeetId: wemeetId,
+    name: name,
+    description: description,
     sessionDateTime: s.toJSON().substr(0, 16),
-    duration: "0",
+    duration: duration,
   });
 
   const handleChange = (event) => {
     setFormValues({
       ...formValues,
       [event.target.name]: event.target.value,
-      hostId: user._id,
-      wemeetId: wemeetId,
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createSession(formValues)
-      .then((data) => {
-        console.log("data", data);
-        alert("Session created");
-        setFormVisibility(false);
-      })
-      .catch(console.log);
+    if (Number(type)) {
+      createSession(formValues)
+        .then((data) => {
+          alert("Session created");
+          history.go(0);
+          setFormVisibility(false);
+        })
+        .catch(console.log);
+    } else {
+      updateSession(formValues, data._id)
+        .then((data) => {
+          alert("Session updated");
+          history.go(0);
+          setFormVisibility(false);
+        })
+        .catch(console.log);
+    }
   };
 
   return (
@@ -158,4 +167,4 @@ const NewSessionForm = (props) => {
   );
 };
 
-export default NewSessionForm;
+export default withRouter(NewSessionForm);
