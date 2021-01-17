@@ -11,7 +11,7 @@ import SpeakersHosts from "./components/Navneet Singh/WeMeetSummary/SpeakersHost
 import RegistrantsPage from "./components/Hardik/Registrants/RegistrantsPage";
 import EditProfile from "./components/Navneet Singh/EditProfile";
 import ErrorAccessDenied from "./components/Hardik/ErrorAccessDenied/ErrorAccessDenied";
-
+import EventPage from './components/DEEPAK/LAST-VALA-PAGE/Last_page'
 import { isAuthenticated } from "./components/Hardik/LogIn/apiLogin";
 
 import "./App.css";
@@ -55,6 +55,12 @@ const App = () => {
                 path="/wemeets/:wemeetId/registrants"
                 component={RegistrantsPage}
               ></Route>
+              <Route
+                exact
+                path="/e/:wemeetId"
+                component={EventPage}
+              >
+              </Route>
             </>
           ) : (
             <ErrorAccessDenied />
