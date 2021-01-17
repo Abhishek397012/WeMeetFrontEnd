@@ -30,3 +30,17 @@ export const getAllSessions = (hostId, wemeetId) => {
     })
     .catch(console.log);
 };
+
+export const getSessionDetails = (hostId, wemeetId, sessionId) => {
+  return fetch(`${API}/wemeets/${hostId}/${wemeetId}/${sessionId}/summary`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch(console.log);
+};

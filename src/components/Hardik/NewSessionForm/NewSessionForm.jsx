@@ -25,7 +25,7 @@ const NewSessionForm = (props) => {
 
   const { user } = isAuthenticated();
   const { type, data, wemeetId } = props;
-  const { title, summary, datetime, duration } = data;
+  const { name, description, sessionDateTime, duration } = data;
   const [formVisibility, setFormVisibility] = useState(false);
   const s = new Date();
   const [formValues, setFormValues] = useState({
@@ -105,7 +105,7 @@ const NewSessionForm = (props) => {
                   id="outlined-basic"
                   label="Session Title"
                   placeholder="Please add a clear name for session."
-                  defaultValue={title}
+                  defaultValue={name}
                   variant="outlined"
                 />
                 <TextField
@@ -116,7 +116,7 @@ const NewSessionForm = (props) => {
                   id="outlined-basic"
                   label="Session Summary"
                   placeholder="Add a descriptive summary."
-                  defaultValue={summary}
+                  defaultValue={description}
                   variant="outlined"
                 />
                 <TextField
@@ -126,7 +126,7 @@ const NewSessionForm = (props) => {
                   className={classes.datetime}
                   label="Start date and time"
                   type="datetime-local"
-                  defaultValue={datetime}
+                  defaultValue={sessionDateTime}
                   InputLabelProps={{
                     shrink: true,
                   }}
