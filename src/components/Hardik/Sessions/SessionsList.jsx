@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import SessionCard from "./SessionCard";
+import WithSpinner from "../WithSpinner/WithSpinner";
 import { getAllSessions } from "../NewSessionForm/apiSessions";
 import { isAuthenticated } from "../LogIn/apiLogin";
 
@@ -9,22 +10,21 @@ import { useStyles } from "./styles";
 const SessionsList = (props) => {
   const classes = useStyles();
   const { user } = isAuthenticated();
+  const [isPending, setIsPending] = useState(true);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     getAllSessions(user._id, props.wemeetId)
       .then((items) => {
-        console.log(items);
         setData(items);
+        setIsPending(false);
       })
       .catch(console.log);
   }, [props.wemeetId, user._id]);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
-  return (
+  return isPending ? (
+    <WithSpinner />
+  ) : (
     <div className={classes.cardlist}>
       {console.log(data.size)}
       {data.map((info) => {

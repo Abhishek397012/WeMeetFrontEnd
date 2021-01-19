@@ -4,6 +4,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
 import SummarySidebar from "../../Navneet Singh/WeMeetSummary/SummarySidebar";
+import WithSpinner from "../WithSpinner/WithSpinner";
 import SearchBox from "./SearchBox";
 import RegistrantsList from "./RegistrantsList";
 
@@ -21,6 +22,7 @@ const RegistrantsPage = (props) => {
   const classes = useStyles();
   const [registrants, setRegistrants] = useState([]);
   const [searchfield, setSearchfield] = useState("");
+  const [isPending, setIsPending] = useState(true);
 
   const { user } = isAuthenticated();
 
@@ -28,6 +30,7 @@ const RegistrantsPage = (props) => {
     getRegistrants(user._id, props.match.params.wemeetId)
       .then((data) => {
         setRegistrants(data);
+        setIsPending(false);
       })
       .catch(console.log);
   }, [user._id, props.match.params.wemeetId]);
@@ -47,7 +50,11 @@ const RegistrantsPage = (props) => {
           <h1 className={classes.header}>Registrants</h1>
           <div className={classes.page}>
             <SearchBox searchChange={onSearchChange} />
-            <RegistrantsList registrants={filteredRegistrants} />
+            {isPending ? (
+              <WithSpinner />
+            ) : (
+              <RegistrantsList registrants={filteredRegistrants} />
+            )}
           </div>
         </div>
       </SummarySidebar>
