@@ -7,8 +7,8 @@
 }
 
 .info_wrapper{
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: 64px;
+  padding-right: 64px;
   flex-direction: column;
   display: flex;
   box-sizing: border-box;
@@ -16,6 +16,73 @@
   max-height: calc(100vh - 70px);
   min-height: calc(100vh - 70px);
   overflow-y: scroll;
+  border: 1px solid red;
+}
+
+.info_header{
+  color: rgb(242, 241, 247);
+  font-weight: bold;
+  font-size: 2em;
+  border: 1px solid red;
+  margin-right: 2em
+}
+
+.info_heading{
+  display: flex;
+  border: 1px solid red;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.meetup_desc{
+  color:rgb(160, 155, 182)
+}
+
+.edit_info_btn{
+  color: rgb(45, 42, 65);
+  background-color: rgb(175, 173, 190);
+  font-size: 1.4em;
+  text-align: left;
+  transition: all 0.3s ease 0s;
+  border-radius: 5px;
+  padding: 3px;
+  padding-bottom: 2px;
+}
+
+.edit_info_btn:focus:active{
+  outline: none !important;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+.edit_info_btn:hover{
+  transition: all 0.3s ease 0s;
+  color: rgb(102, 92, 141);
+  text-decoration: none;
+}
+
+.info_description{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  margin-top: 2em;
+}
+
+.desc_copy_stuff{
+  border: 1px solid red;
+  display: flex;
+}
+
+.desc_date{
+  color:rgb(160, 155, 182)
+}
+
+.desc_desc{
+  color:rgb(102, 92, 141)
+}
+
+.desc_name{
+  color:rgb(160, 155, 182)
 }
 
 .color {
@@ -45,6 +112,13 @@
   left: 58%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+}
+
+.bottom_heading {
+  color: rgb(188, 186, 196);
+  font-weight: bold;
+  font-size: 1.3em;
+  margin-bottom: 1.3em;
 }
 
 .new-size-logo {
@@ -118,7 +192,7 @@
   transition: all ease-in-out 300ms;
 }
 .button:hover {
-  color: aliceblue;
+  color: rgb(153, 172, 189);
   text-decoration:none;
   box-shadow: 0px 37px 20px -20px rgba(0, 0, 0, 0.2);
   -webkit-transform: translate(0px, -10px) scale(1.2);

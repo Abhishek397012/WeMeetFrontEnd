@@ -2,6 +2,12 @@ import React, { Component } from "react";
 // import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import {Link} from 'react-router-dom'
+import EditIcon from '@material-ui/icons/Edit';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 class Sidevala extends Component {
   constructor(props) {
@@ -15,81 +21,47 @@ class Sidevala extends Component {
     const el = this.textArea;
     el.select();
     document.execCommand("copy");
-    this.setState({ copySuccess: true });
+    this.setState({ copySuccess: true }); 
   };
   render() {
     return (
-      <>
-        <div class="container mt-5">
-          <div class="row">
-            <div class="col-10">
-              <div class="row">
-                <div class="col">
-                  <h1>About this WeMeet</h1>
-                </div>
-                <div class="col">
-                  <a className="button">Edit WeMeet details</a>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-3">
-                  <h3>
-                    <span>
-                      <i class="material-icons">assignment_ind</i>
-                    </span>
-                    WeMeet
-                  </h3>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col">
-                  <h5>12/122/1232</h5>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-5">
-                  {/*<input className="inputvali" />*/}
-                  <textarea value={`https://www.wemeet.com/e/${this.props.id}`} ref={(textarea) => (this.textArea = textarea)} />
-                </div>
-
-                <div class="col-2">
-                  <button
-                    onClick={() => this.copyCodeToClipboard()}
-                    className="button1"
-                  >
-                    copy Link
-                  </button>
-                  {this.state.copySuccess ? (
-                    <div style={{ color: "black" }}>copied</div>
-                  ) : null}
-                </div>
-                <div class="col-4">
-                <Link to={`/e/${this.props.id}`} className="button2">View Event Page</Link>
-                </div>
-              </div>
-            </div>
-            <div class="col-1"></div>
+      <div className="info_wrapper">
+        <div className="info_heading">
+          <div className="info_header">
+            About this WeMeet
           </div>
-          <div class="row">
-            <div class="col">
-              <hr className="hrnew1"></hr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-5">
-              <h3>
-                Airmeet Description
-                <span>
-                  <i class="material-icons">edit</i>
-                </span>
-              </h3>
-              <textarea rows="4" cols="50"></textarea>
-            </div>
+          <div>
+              <Link className="edit_info_btn">< EditIcon />Edit WeMeet details</Link>
           </div>
         </div>
-      </>
+        <div className="info_description">
+          <div className="meetup_desc"> <AssignmentIndIcon /> Meetup</div>
+          <div className="desc_name">WeMeet Name</div>
+          <div className="desc_desc">WeMeet Description</div>
+          <div className="desc_date">WeMeet start - Wemeet end</div>
+          <div className="desc_copy_stuff" style={{marginTop: "2.5em"}}>
+            <textarea 
+              value={`https://www.wemeet.com/e/${this.props.id}`} 
+              ref={(textarea) => (this.textArea = textarea)} 
+              style={{minWidth: "100px", borderRadius: "10px", paddingTop: "10px", paddingLeft: "10px", marginRight: "3em"}}
+              cols="60"
+            />
+            <div>            
+              <button
+                  onClick={() => this.copyCodeToClipboard()}
+                  className="button1"
+                  style={{marginRight: "5em"}}
+              >copy Link</button>
+              {this.state.copySuccess ? (<div style={{ color: "white" }}>copied</div>) : null }
+            </div>
+            <Link to={`/e/${this.props.id}`} className="button2">View Event Page</Link>
+          </div>
+          <div className="wemeet_desc_edit">
+            <div className="desc_desc">WeMeet Description <EditIcon/></div>
+            <textarea rows="4" cols="100"></textarea>
+          </div>
+        </div>
+      </div>
     );
   }
 }

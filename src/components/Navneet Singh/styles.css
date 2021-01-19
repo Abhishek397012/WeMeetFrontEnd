@@ -109,7 +109,7 @@ li {
 .sidebar_links {
   color: rgb(225, 224, 230);
   transition: all 0.3s;
-}
+} 
 
 .sidebar_links:hover {
   color: rgb(139, 137, 145);
