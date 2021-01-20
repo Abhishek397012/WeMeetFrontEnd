@@ -16,20 +16,17 @@
   max-height: calc(100vh - 70px);
   min-height: calc(100vh - 70px);
   overflow-y: scroll;
-  border: 1px solid red;
 }
 
 .info_header{
   color: rgb(242, 241, 247);
   font-weight: bold;
   font-size: 2em;
-  border: 1px solid red;
   margin-right: 2em
 }
 
 .info_heading{
   display: flex;
-  border: 1px solid red;
   align-items: center;
   margin-top: 2em;
 }
@@ -64,25 +61,29 @@
 .info_description{
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
   margin-top: 2em;
 }
 
 .desc_copy_stuff{
-  border: 1px solid red;
   display: flex;
 }
 
 .desc_date{
-  color:rgb(160, 155, 182)
+  margin-top: 1.3em;
+  color: #7ed5fd;
 }
 
 .desc_desc{
-  color:rgb(102, 92, 141)
+  color: #fff;
+  margin-top: 1.2em;
+  font-size: 1.5em;
 }
 
 .desc_name{
-  color:rgb(160, 155, 182)
+  margin-top: 0.5em;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5em;
 }
 
 .color {

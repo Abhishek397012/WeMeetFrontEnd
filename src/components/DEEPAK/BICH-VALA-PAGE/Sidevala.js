@@ -46,6 +46,19 @@ class Sidevala extends Component {
     });
     // this.setState({ copySuccess: true }); 
   };
+  getTime = (dateString) =>{
+    var myDate = new Date(dateString);
+    var minutes = myDate.getMinutes();
+    var hours = myDate.getHours();
+    if(minutes>=0 && minutes<=9){
+      minutes = "0"+minutes;
+    }
+    if(hours>=0 && hours<=9){
+      hours = "0"+hours;
+    }
+    var time = hours + ": " + minutes + " IST";
+    return time;
+  }
   render() {
     return (
       <div className="info_wrapper">
@@ -55,13 +68,13 @@ class Sidevala extends Component {
           </div>
           <div>
               <Link className="edit_info_btn">< EditIcon />Edit WeMeet details</Link>
-          </div>
+          </div> 
         </div>
         <div className="info_description">
           <div className="meetup_desc"> <AssignmentIndIcon /> Meetup</div>
           <div className="desc_name">{this.state.Wemeet.title}</div>
           <div className="desc_desc">{this.state.Wemeet.description}</div>
-          <div className="desc_date">{this.state.Wemeet.startDateTime} - {this.state.Wemeet.endDateTime}</div>
+          <div className="desc_date">{new Date(this.state.Wemeet.startDateTime).toDateString()} {this.getTime(this.state.Wemeet.startDateTime)} - {new Date(this.state.Wemeet.endDateTime).toDateString()} {this.getTime(this.state.Wemeet.endDateTime)}</div>
           <div className="desc_copy_stuff" style={{marginTop: "2.5em"}}>
             <textarea 
               value={`https://www.wemeet.com/e/${this.props.id}`} 
