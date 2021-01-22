@@ -25,12 +25,13 @@ const App = () => {
       <div style={{ marginTop: "70px" }}>
         <Switch>
           <Route exact path="/" component={LandingPage}></Route>
-          {user ? (
+          {user && (
             <>
               <Route
                 exact
                 path="/dashboard"
                 component={CommunityDashboard}
+                condition={!true}
               ></Route>
               <Route exact path="/wemeets" component={WeMeets}></Route>
               <Route exact path="/profile" component={Profile}></Route>
@@ -56,9 +57,8 @@ const App = () => {
                 component={RegistrantsPage}
               ></Route>
             </>
-          ) : (
-            <ErrorAccessDenied />
           )}
+          <Route path="*" component={ErrorAccessDenied}></Route>
         </Switch>
       </div>
     </div>

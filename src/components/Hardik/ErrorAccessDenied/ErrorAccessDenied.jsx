@@ -7,7 +7,7 @@ const ErrorAccessDenied = () => {
 
   return (
     <div className={classes.root}>
-      <h2>Error 404: Access Denied</h2>
+      <h2>Error 404: Not Found</h2>
       <h3>Please check if you're logged in or not, or try reloading.</h3>
     </div>
   );
