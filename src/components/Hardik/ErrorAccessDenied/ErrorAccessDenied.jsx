@@ -2,7 +2,6 @@ import { useHistory } from "react-router-dom";
 
 import { isAuthenticated } from "../LogIn/apiLogin";
 
-import LogIn from "../LogIn/LogIn";
 import Button from "@material-ui/core/Button";
 import ReplayIcon from "@material-ui/icons/Replay";
 import { useStyles } from "./styles";
@@ -21,7 +20,6 @@ const ErrorAccessDenied = () => {
           : "Make sure that you're logged in or try reloading"}
       </h3>
       <div className={classes.buttonGroup}>
-        {!user && <LogIn />}
         <Button
           variant="contained"
           color="primary"
