@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -20,6 +21,7 @@ const theme = createMuiTheme({
 
 const RegistrantsPage = (props) => {
   const classes = useStyles();
+  const { wemeetId } = useParams();
   const [registrants, setRegistrants] = useState([]);
   const [searchfield, setSearchfield] = useState("");
   const [isPending, setIsPending] = useState(true);
@@ -27,13 +29,13 @@ const RegistrantsPage = (props) => {
   const { user } = isAuthenticated();
 
   useEffect(() => {
-    getRegistrants(user._id, props.match.params.wemeetId)
+    getRegistrants(user._id, wemeetId)
       .then((data) => {
         setRegistrants(data);
         setIsPending(false);
       })
       .catch(console.log);
-  }, [user._id, props.match.params.wemeetId]);
+  }, [user._id, wemeetId]);
 
   const onSearchChange = (event) => {
     setSearchfield(event.target.value);
@@ -45,7 +47,7 @@ const RegistrantsPage = (props) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <SummarySidebar id={props.match.params.wemeetId}>
+      <SummarySidebar id={wemeetId}>
         <div className={classes.root}>
           <h1 className={classes.header}>Registrants</h1>
           <div className={classes.page}>

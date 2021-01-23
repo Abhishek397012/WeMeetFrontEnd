@@ -1,4 +1,4 @@
-import React from "react";
+import { useParams } from "react-router-dom";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -17,6 +17,7 @@ const theme = createMuiTheme({
 
 const SessionsPage = (props) => {
   const classes = useStyles();
+  const { wemeetId } = useParams();
   const s = new Date();
   const defaultValues = {
     name: "",
@@ -27,18 +28,14 @@ const SessionsPage = (props) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <SummarySidebar id={props.match.params.wemeetId}>
+      <SummarySidebar id={wemeetId}>
         <div className={classes.root}>
           <h1 className={classes.header}>
             Sessions
-            <NewSessionForm
-              type={1}
-              data={defaultValues}
-              wemeetId={props.match.params.wemeetId}
-            />
+            <NewSessionForm type={1} data={defaultValues} wemeetId={wemeetId} />
           </h1>
           <div className={classes.page}>
-            <SessionsList wemeetId={props.match.params.wemeetId} />
+            <SessionsList wemeetId={wemeetId} />
           </div>
         </div>
       </SummarySidebar>

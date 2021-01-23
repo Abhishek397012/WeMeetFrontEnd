@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import SummarySidebar from "./SummarySidebar.js";
 import "./styles.css";
 import SpeakerCard from "./SpeakersCard";
@@ -7,6 +9,7 @@ import { isAuthenticated } from "../../Hardik/LogIn/apiLogin";
 
 const SpeakersHosts = (props) => {
   const { user } = isAuthenticated();
+  const { wemeetId } = useParams();
 
   const [AllSpeakers, setAllSpeakers] = useState({});
   const [error, SetError] = useState(false);
@@ -34,7 +37,7 @@ const SpeakersHosts = (props) => {
   }, []);
 
   return (
-    <SummarySidebar id={props.match.params.wemeetId}>
+    <SummarySidebar id={wemeetId}>
       <div className="dashboard_wrapper">
         <h1 className="WeMeet_Dashboard_heading WeMeet_Main_Dashboard_heading ">
           Speakers & Hosts

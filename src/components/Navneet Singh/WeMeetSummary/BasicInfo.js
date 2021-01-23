@@ -1,11 +1,10 @@
 import SummarySidebar from "./SummarySidebar.js";
+import { useParams } from "react-router-dom";
 
 const BasicInfo = (props) => {
-  return (
-    <SummarySidebar id={props.match.params.wemeetId}>
-      Basic Information
-    </SummarySidebar>
-  );
+  const { wemeetId } = useParams();
+
+  return <SummarySidebar id={wemeetId}>Basic Information</SummarySidebar>;
 };
 
 export default BasicInfo;
