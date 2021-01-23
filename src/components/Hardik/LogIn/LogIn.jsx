@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import SignInGoogle from "../SignInGoogle/SignInGoogle";
 import SignInFb from "../SignInFb/SignInFb";
@@ -18,6 +19,7 @@ const useStyles = makeStyles((theme) => styles);
 
 const LogIn = () => {
   const classes = useStyles();
+  const history = useHistory();
   const [isVisible, setVisibility] = useState(false);
   const [user] = useAuthState(auth);
 
@@ -31,7 +33,8 @@ const LogIn = () => {
         variant="contained"
         color="primary"
         onClick={() => {
-          return setVisibility(true);
+          history.push("/");
+          setVisibility(true);
         }}
       >
         <PersonIcon style={{ margin: "0 5px 0 0" }} />

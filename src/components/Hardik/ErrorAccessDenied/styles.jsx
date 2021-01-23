@@ -9,4 +9,13 @@ export const useStyles = makeStyles(() => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  buttonGroup: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    margin: "10px",
+  },
+  button: {
+    marginLeft: "5px",
+  },
 }));
