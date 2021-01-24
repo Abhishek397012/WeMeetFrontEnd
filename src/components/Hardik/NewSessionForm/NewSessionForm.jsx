@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { withRouter } from "react-router-dom";
 
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -26,6 +26,7 @@ const NewSessionForm = (props) => {
 
   const { user } = isAuthenticated();
   const { type, data, wemeetId, history } = props;
+  const [isProcessing, setIsProcessing] = useState(false);
   const { name, description, sessionDateTime, duration } = data;
   const [formVisibility, setFormVisibility] = useState(false);
   const s = new Date(sessionDateTime);
@@ -47,10 +48,12 @@ const NewSessionForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsProcessing(true);
     if (Number(type)) {
       createSession(formValues)
         .then((data) => {
           alert("Session created");
+          setIsProcessing(false);
           history.go(0);
           setFormVisibility(false);
         })
@@ -59,6 +62,7 @@ const NewSessionForm = (props) => {
       updateSession(formValues, data._id)
         .then((data) => {
           alert("Session updated");
+          setIsProcessing(false);
           history.go(0);
           setFormVisibility(false);
         })
@@ -155,8 +159,17 @@ const NewSessionForm = (props) => {
                 />
               </div>
               <div className={classes.submit}>
-                <Button type="submit" variant="contained" color="primary">
-                  {Number(type) ? `CREATE NEW SESSION` : `SAVE DEATILS`}
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  disabled={isProcessing}
+                >
+                  {isProcessing
+                    ? "PROCESSING..."
+                    : Number(type)
+                    ? `CREATE NEW SESSION`
+                    : `SAVE DEATILS`}
                 </Button>
               </div>
             </form>

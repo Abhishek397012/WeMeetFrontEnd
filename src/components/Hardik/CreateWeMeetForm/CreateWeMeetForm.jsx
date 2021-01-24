@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Close from "@material-ui/icons/Close";
@@ -19,11 +19,13 @@ const theme = createMuiTheme({
   },
 });
 
-const CreateWeMeetForm = ({ history }) => {
+const CreateWeMeetForm = () => {
   const { user } = isAuthenticated();
+  const history = useHistory();
 
   const classes = useStyles();
   const [formVisibility, setFormVisibility] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [lounge, loungeStatus] = useState(false);
   const [meetVisibility, setMeetVisibility] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -43,13 +45,14 @@ const CreateWeMeetForm = ({ history }) => {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsProcessing(true);
     if (user) {
       setFormValues({
         ...formValues,
         hostId: user._id,
       });
     }
-    event.preventDefault();
     console.log(formValues);
     createWeMeet(user._id, formValues)
       .then((data) => {
@@ -57,11 +60,14 @@ const CreateWeMeetForm = ({ history }) => {
         toast.success("WeMeet Created Successfully!!", {
           position: toast.POSITION.TOP_CENTER,
         });
+        setIsProcessing(false);
         setFormVisibility(false);
         history.push("/dashboard");
       })
       .catch((err) => {
-        console.log(err);
+        setIsProcessing(false);
+        setFormVisibility(false);
+        history.push("/dashboard");
       });
   };
 
@@ -183,8 +189,13 @@ const CreateWeMeetForm = ({ history }) => {
                 ) : null}
               </div>
               <div className={classes.submit}>
-                <Button type="submit" variant="contained" color="primary">
-                  CREATE WEMEET
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  disabled={isProcessing}
+                >
+                  {isProcessing ? "PROCESSING..." : "CREATE WEMEET"}
                 </Button>
               </div>
             </form>
@@ -195,4 +206,4 @@ const CreateWeMeetForm = ({ history }) => {
   );
 };
 
-export default withRouter(CreateWeMeetForm);
+export default CreateWeMeetForm;
